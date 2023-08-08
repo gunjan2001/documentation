@@ -16,21 +16,30 @@
 
 - As the browser parses the content received, it builds the document object model (DOM) and the CSS object model (CSSOM). It then also builds an accessibility tree.
 - The AOM is like a semantic version of the DOM.
-## Html 5 Elements:
 
-- All Sementic Elements.
+## HTML Semantic Elements:
+
+- Semantic elements = elements with a meaning.</br>
+- A semantic element clearly describes its meaning to both the browser and the developer.</br>
 
 ```
-Color
-Date
-Datetime-local
-Email
-Time
-Url
-Range
-Telephone
-Number
-Search
+header
+section
+footer
+nav
+```
+
+## Html 5 Features:
+
+- All Sementic Elements.
+- Audio and Video Support.
+- Canvas Elements.
+- Local Storage
+- Responsive Images using **srcset** & **sizes** attribute in img tag. For example:
+
+```
+srcset=" small.jpg 240w, medium.jpg 300w, large.jpg 720w
+sizes=" (min-width: 960px) 720px, 100vw "
 ```
 
 ## What is a marquee in HTML?
@@ -39,11 +48,12 @@ Marquee is used for scrolling text on a web page. It scrolls the image or text u
 
 ## What is the difference between “display: none” and “visibility: hidden” when used as attributes to the HTML element?
 
-The main difference between “display: none” and “visibility: hidden” is that the former removes the element from the document flow, while the latter simply hides it. Elements with “display: none” are not visible and do not take up any space on the page, while elements with “visibility: hidden” are not visible but still take up space.
+“display: none” : It removes the element from the document flow & do not take up any space on the page
+“visibility: hidden” : It simply hides element & It take up space.
 
 ## When to use scripts in the head and when to use scripts in the body?
 
-Scripts can be placed in the <head> section of the HTML document or in the <body> section. Scripts that must be executed before the page is displayed, such as scripts that define variables or functions, should be placed in the <head> section. Scripts that must be executed after the page is displayed, such as scripts that manipulate the DOM, should be placed in the <body> section.
+Scripts can be placed in the `<head>` section of the HTML document or in the `<body>` section. Scripts that must be executed before the page is displayed, such as scripts that define variables or functions, should be placed in the `<head>` section. Scripts that must be executed after the page is displayed, such as scripts that manipulate the DOM, should be placed in the `<body>` section.
 
 ## Tags:
 
@@ -99,15 +109,15 @@ Scripts can be placed in the <head> section of the HTML document or in the <body
 
 ## HTML Formatting Elements:
 
-<strong> - Important text </strong> </br>
-<i> - Italic text </i></br>
-<em> - Emphasized text </em></br>
-<mark> - Marked text </mark></br>
-<small> - Smaller text </small></br>
-<del> - Deleted text </del></br>
-<ins> - Inserted text </ins></br>
-<sub> - Subscript text </sub></br>
-<sup> - Superscript text </sup>
+`<strong>`: <strong> - Important text </strong> </br>
+`<i>`: <i> - Italic text </i></br>
+`<em>`: <em> - Emphasized text </em></br>
+`<mark>`: <mark> - Marked text </mark></br>
+`<small>`: <small> - Smaller text </small></br>
+`<del>`: <del> - Deleted text </del></br>
+`<ins>`: <ins> - Inserted text </ins></br>
+`<sub>`: <sub> - Subscript text </sub></br>
+`<sup>`: <sup> - Superscript text </sup>
 
 </br></br>
 
@@ -169,23 +179,6 @@ Scripts can be placed in the <head> section of the HTML document or in the <body
 
 - `<link rel="icon" type="image/x-icon" href="/images/favicon.ico">`.
 
-## table properties:
-
-- border: 1px solid black. </br>
-- To avoid having double borders -> border-collapse: collapse. </br>
-- With the `border-radius` property, the borders get rounded corners. </br>
-- `border-style`: </br>
-  ![iamge](/images/tableborder.png)
-
-- `border-color: #96D4D4;` </br>
-- To add a caption/title to a table, use the `<caption>` tag </br>
-- The `<caption>` tag should be inserted immediately after the `<table>` tag. </br>
-- To add `padding` only `above` the content, use the `padding-top` property. And the others sides with the `padding-bottom`, `padding-left`, and `padding-right` properties. </br>
-- `HTML Table - Cell Spacing` we used `border-spacing: 20px` </br>
-- To style every other table row element, use the `tr:nth-child(even)` selector like this.</br>
-- Add the `border-bottom` property to all `tr` elements to get horizontal dividers.</br>
-- Use the `:hover` selector on `tr` to `highlight` table rows on mouse over.</br>
-
 ## `<colgroup>`:
 
 - The `<colgroup>` element is used to style specific columns of a table. </br>
@@ -207,9 +200,17 @@ Scripts can be placed in the <head> section of the HTML document or in the <body
 
 ## Blocklevel elements:
 
+```
+div, p, nav, video, section, table, h1-h6, order, unorder, description lists.
+```
+
 ![img](/images/blocklevel.png)
 
 ## Inline Elements:
+
+```
+a-anchor, input, img, label, button, textarea, sub, sup, strong.
+```
 
 ![img](/images/inline.png)
 
@@ -253,21 +254,17 @@ Scripts can be placed in the <head> section of the HTML document or in the <body
 
 ### Media Queries:
 
-- It is like an if condition that you apply on different devices screen sizes. you can set max-width for particular format and above that it will change it will change format of content.
-  ![image](/images/media.png)
+- It is like an if condition that you apply on different devices screen sizes.
+- you can set max-width for particular format and above that it will change it will change format of content.
 
-## Computercode:
-
-![img](/images/cpcodes.png)
-
-## HTML Semantic Elements:
-
-- Semantic elements = elements with a meaning.</br>
-- A semantic element clearly describes its meaning to both the browser and the developer.</br>
-- Examples of non-semantic elements: `<div> and <span>`- Tells nothing about its content.</br>
-- Examples of semantic elements: `<form>, <table>, and <article>` - Clearly defines its content.</br>
-
-![img](/images/sementics.png)
+```
+@media (max-width: 300px) {
+  #box-1{
+    display: block;
+    background-color: cyan;
+  }
+}
+```
 
 ## Omitting `<html>` and `<body>`?
 
@@ -280,29 +277,30 @@ Scripts can be placed in the <head> section of the HTML document or in the <body
 
 ## HTML Entities:
 
-![img](/images/entities.png)
+```
+&entity_name;
+OR
+&#entity_number;
+```
+
+- Ex: **&lt,&copy**
 
 ### nbsp:
 
-![img](/images/nbsp.png)
-
-## Diacritical Marks:
-
-![img](/images/diacritical.png)
+- non breaking space
 
 ## Form:
 
-### input element:
-
-![img](/images/input.png)
-
 ### label element:
 
-![img](/images/label.png)
+- The `<label>` tag defines a label for many form elements.
+- The `<label>` element is useful for screen-reader users, because the screen-reader will read out loud the label when the user focus on the input element.
+- The `<label>` **_ element also help users who have difficulty clicking on very small regions (such as radio buttons or checkboxes) - because when the user clicks the text within the `<label>` element, it toggles the radio button/checkbox _**.
+- The **for** attribute of the `<label>` tag should be equal to the **id** attribute of the `<input>` element to bind them together.
 
-### The Name Attribute for `<input>` :
+### The `name` Attribute for `<input>` :
 
-- Notice that each input field must have a name attribute to be submitted. If the name attribute is omitted, the value of the input field will not be sent at all.</br>
+- Notice that each input field must have a **name** attribute to be submitted. If the **name** attribute is omitted, the value of the input field will not be sent at all.</br>
 - The name attribute specifies the name of an `<input>` element. </br>
 - The name attribute is used to reference elements in a JavaScript, or to reference form data after a form is submitted.
 
@@ -312,17 +310,16 @@ Scripts can be placed in the <head> section of the HTML document or in the <body
 
 ### The Target Attribute:
 
-![img](/images/target.png)
+`_blank`: The response is displayed in a new window or tab
+`_self` : The response is displayed in the current window
+`_parent`: The response is displayed in the parent frame
+`_top`: The response is displayed in the full body of the window
 
 ### The Method Attribute:
 
-![img](/images/method.png)
+- **get & post**
 
 ### The Autocomplete Attribute:
-
-![img](/images/autocomplete.png) </br>
-
-![img](/images/autocomplete2.png)
 
 ### The `<select>` Element:
 
@@ -337,32 +334,21 @@ Scripts can be placed in the <head> section of the HTML document or in the <body
 - The `<textarea>` element defines a multi-line input field (a text area):
 - The rows attribute specifies the visible number of lines in a text area.
 - The cols attribute specifies the visible width of a text area.
-  ![img](/images/textarea.png)
+
+```
+<textarea name="message" rows="10" cols="30">
+  The cat was playing in the garden.
+</textarea>
+```
 
 ### The `<fieldset>` and `<legend>` Elements:
 
-![img](/images/fieldset.png)
-
-### The `datalist` element:
-
-![img](/images/datalist.png)
-
-### The form elements:
-
-![img](/images/form.png)
-
-### The input types:
-
-![img](/images/input%20types.png)
-
-![img](/images/tel%20type.png)
+- This is used to provide a border to our form and to place text within that border, displaying the title of the form.
 
 ### The disabled attributes:
 
-![img](/images/disabled.png)
+- make input field disabled.
 
 ### The formaction Attribute:
 
-![img](/images/formaction3.png)
-
-###
+- The formaction attribute specifies the URL of a file that will process the input when the form is submitted.
