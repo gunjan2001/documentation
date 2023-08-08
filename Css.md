@@ -1,65 +1,33 @@
 # CSS:
 
 The cascade algorithm is split into 4 distinct stages.
-
-Position and order of appearance: the order of which your CSS rules appear
-Specificity: an algorithm which determines which CSS selector has the strongest match
-Origin: the order of when CSS appears and where it comes from, whether that is a browser style, CSS from a browser extension, or your authored CSS
-Importance: some CSS rules are weighted more heavily than others, especially with the !important rule type
+**Position and order of appearance**: the order of which your CSS rules appear
+**Specificity:** an algorithm which determines which CSS selector has the strongest match
+**Origin**: the order of when CSS appears and where it comes from, whether that is a browser style, CSS from a browser extension, or your authored CSS
+**Importance**: some CSS rules are weighted more heavily than others, especially with the !important rule type
 
 ## specificity:
 
-Universal selector #
-- A universal selector (*) has no specificity and gets 0 points.
+**Universal selector**
 
+- A universal selector (\*) has no specificity and gets 0 points.
 - An element (type) or pseudo-element selector gets 1 point of specificity .
 
-Class, pseudo-class, or attribute selector #
+**Class, pseudo-class, or attribute selector #**
+
 - A class, pseudo-class or attribute selector gets 10 points of specificity.
 
-ID selector #
+**ID selector #**
+
 - An ID selector gets 100 points of specificity, as long as you use an ID selector (#myID) and not an attribute selector ([id="myID"]).
 
-Inline style attribute #
-CSS applied directly to the style attribute of the HTML element, gets a specificity score of 1,000 points. 
+**Inline style attribute #**
 
-!important rule #
-Lastly, an !important at the end of a CSS value gets a specificity score of 10,000 points.
+- CSS applied directly to the style attribute of the HTML element, gets a specificity score of 1,000 points.
 
+**!important rule #**
 
-## css background:
-
-### background-image properties:
-
-- By default, the background-image property repeats an image both horizontally and vertically.
-- `background-repeat: repeat-x;` : repeated only horizontally
-- `background-repeat: repeat-y;` : repeat an image vertically
-- `background-repeat: no-repeat;` : no reapeat background
-
-### CSS background-position
-
-- The background-position property is used to specify the position of the background image.
-- `background-position` property is used.
-
-### CSS background-attachment:
-
-- The `background-attachment` property specifies whether the background image should scroll or be fixed.
-- Values are : `fixed`, `scroll`
-
-### CSS background - Shorthand property:
-
-- To shorten the code, it is also possible to specify all the background properties in one single property.
-- Example: `body { background: #ffffff url("img_tree.png") no-repeat right top; }`
-
-## css border:
-
-![img](/images/border.png) </br>
-
-`Properties`:-
-
-- `border-width`, `border-color`,`border-sides`, `border-radius` etc.
-- In CSS, there are also properties for specifying each of the borders (top, right, bottom, and left).
-- `border-side_name-style`. you can write like this : `border-style: dotted solid double dashed;`
+- Lastly, an !important at the end of a CSS value gets a specificity score of 10,000 points.
 
 ## CSS Margins:
 
@@ -120,44 +88,9 @@ Lastly, an !important at the end of a CSS value gets a specificity score of 10,0
 - Width = content width
 - Height = content height
 
-## CSS Outline:
-
-![img](/images/cssoutline.png)
-
-## css text:
-
-### Text Alignment:
-
-- The text-align property is used to set the horizontal alignment of a text.
-- A text can be `left` or `right` aligned, `centered`, or `justified`.
-- When the text-align property is set to `"justify"`, each line is stretched so that every line has equal width, and the left and right margins are straight
-
-### `text-align-last`:
-
-- The `text-align-last` property specifies how to align the last line of a text.
-
-### Text Direction
-
-- The direction and unicode-bidi properties can be used to change the text direction of an element:
-
-![img](/images/textalign.png)
-
-![img](/images/textalign2.png)
-
 ### Text Decoration:
 
 - All links in HTML are underlined by default. Sometimes you see that links are styled with no underline. The `text-decoration: none;` is used to remove the underline from links, like this.
-
-### Text Spacing:
-
-![img](/images/textspacing.png)
-
-### Text Shadow:
-
-- `h1 {
-  text-shadow: 2px 2px 5px red;
-}`
-- 5px specify the blure shadow.
 
 ## What are Web Safe Fonts?
 
@@ -175,7 +108,21 @@ Lastly, an !important at the end of a CSS value gets a specificity score of 10,0
 
 ## CSS Position:
 
-- properties: `static(default),absolute,relative, fixed, sticky(top:0)`
+- properties:
+
+```
+static(default),
+absolute,
+relative,
+fixed,
+sticky(top:0)
+```
+
+## fixed vs sticky:
+
+- **the 'fixed' position sets the position of the HTML elements according to the viewport, and the 'sticky' position sets the position according to the parent element**
+- fixed: It always overrides the other elements.
+- sticky: It overrides the other elements when the element reaches the offset and becomes fixed.
 
 ## CSS Combinators:
 
@@ -210,26 +157,44 @@ Lastly, an !important at the end of a CSS value gets a specificity score of 10,0
 ### Hover on `<div>`:
 
 - `:hover` pseudo-class
-- `:first-child` Pseudo-class :- pseudo-class matches a specified element that is the first child of another element.
+- `:visited`, `:target`, `:active`, `:focus` etc.
+- `:first/last-child` Pseudo-class :- pseudo-class matches a specified element that is the first child of another element.
 
 ## What are Pseudo-Elements?
 
-- A CSS pseudo-element is used to style specified parts of an element.
+- A CSS pseudo-element is a keyword added to a selector that lets you style a specific part of the selected element(s).
+- ::after, ::before, ::first-letter, ::first-line
 - For example, it can be used to:
   - Style the first letter, or line, of an element
-  - Insert content before, or after, the content of an element
+  - Insert content **before**, or **after**, the content of an element
 
 ## Units:
 
-- ![img](/images/absolute.png)</br>
+```
+cm: centimeters
+mm: millimeters
+in: inches (1in = 96px = 2.54cm)
+pixels (1px = 1/96th of 1in)
+pt: points (1pt = 1/72 of 1in)
+pc: picas (1pc = 12 pt)
+```
 
-- ![img](/images/relative.png)
+**relative**
 
-## What is Specificity?
+```
+em: Relative to the font-size of the element (2em means 2 times the size of the current font)
 
-- If there are two or more CSS rules that point to the same element, the selector with the highest specificity value will "win", and its style declaration will be applied to that HTML element.
+ex : Relative to the x-height of the current font (rarely used)
 
-- ![img](/images/specify.png)
+ch : Relative to width of the "O" (zero)
+
+rem : Relative to font-size of the root element
+
+vw: Relative to 1% of the width of the viewport
+
+vh: Relative to 1% of the height of the viewport*
+
+```
 
 ## What is !important?
 
@@ -241,8 +206,6 @@ Lastly, an !important at the end of a CSS value gets a specificity score of 10,0
 - The syntax of the var() function is as follows:
   `var(--name, value)` </br>
 
-![img](/images/cssvar.png)
-
 ## Media quries:
 
 - Syntax: </br>
@@ -250,4 +213,12 @@ Lastly, an !important at the end of a CSS value gets a specificity score of 10,0
   CSS-Code;
 }`
 
-![img](/images/mediaquerytype.png)
+- **all**: Used for all media type devices
+- **print**: Used for printers
+- **screen**: Used for computer screens, tablets, smart-phones etc.
+- **speech**: Used for screenreaders that "reads" the page out loud
+
+## Z Index:
+
+- The z-index property specifies the stack order of an element.
+- An element with greater stack order is always in front of an element with a lower stack order.
