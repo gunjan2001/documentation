@@ -653,7 +653,7 @@ const Users = props =>
 **Finally at the conclusion we can conclude in simple terms that the presentational components are concerned with the look, container components are concerned with making things work.**
 
 # Hooks:
-
+- Hooks allow function components to have access to state and other React features. Because of this, class components are generally no longer needed.
 - Hooks don't work inside the classes.
 
 ## Why Hooks?
