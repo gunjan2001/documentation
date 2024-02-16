@@ -352,3 +352,29 @@ OR
 ### The formaction Attribute:
 
 - The formaction attribute specifies the URL of a file that will process the input when the form is submitted.
+
+## How can we create circle and square in html css using only one div?
+
+```
+<div class="shape"></div>
+
+.shape {
+  width: 100px;
+  height: 100px;
+  background-color: blue; /* color for the square */
+  position: relative;
+}
+
+.shape::before {
+  content: '';
+  position: absolute;
+  width: 100px; /* same width as the parent */
+  height: 100px; /* same height as the parent */
+  background-color: red; /* color for the circle */
+  border-radius: 50%; /* makes it a circle */
+  top: 0;
+  left: 150px; /* adjust this value to move the circle */
+}
+
+
+```
