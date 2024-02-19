@@ -1,6 +1,6 @@
 # ReactJs:
 
-- React is a free and open-source front-end JavaScript library for building user interfaces based on components. It is maintained by Meta
+- React is a free and open-source front-end JavaScript library for building user interfaces based on components, especially for single-page applications. It is maintained by Meta
 
 # Features:
 
@@ -12,20 +12,6 @@ The major features of React are:
 - Follows Unidirectional or one-way data flow or data binding. means it will render the components from parent to child.
 - Uses reusable/composable UI components to develop the view.
 
-## What is difference between virtual dom and shallow dom , dom in React js
-
-**1. DOM (Document Object Model):**
-The DOM is a programming interface for web documents.
-
-**2. Virtual DOM:**
-The virtual DOM is a concept used in React to optimize and efficiently update the actual DOM. Instead of directly manipulating the DOM for every change, React uses a virtual representation of the DOM in memory. The virtual DOM is a lightweight copy of the actual DOM tree, maintained by React.
-
-**3. Shallow DOM:**
-
-- Shallow DOM is not a specific term in React.However, it can refer to the concept of shallow rendering in testing libraries.
-- Shallow rendering allows you to render a React component one level deep and assert its behavior without fully rendering its child components.
-- It provides a way to isolate and test individual components without worrying about the behavior or rendering of their child components.
-
 # JSX:
 
 **what is JSX?**
@@ -33,23 +19,6 @@ The virtual DOM is a concept used in React to optimize and efficiently update th
 - JavaScript XML.
 - It writes XML-like code for elements and components.
 - JSX ultimetly transpiles to pure javascript which is understood by the browsers.
-
-Example:
-
-- **create react component using JSX:**
-
-```
-import React from 'react'
-
-const Hello = () =>{
-  return (
-    <>
-    <h1>Welcome </h1>
-    </>
-  )
-}
-
-```
 
 - **Create react component without JSX:**
 
@@ -90,6 +59,24 @@ function App(){
 
 ```
 
+## **1. Virtual DOM:**
+- Virtual DOM is the virtual representation of Real DOM
+- React update the state changes in Virtual DOM first and then it syncs with Real DOM
+- Virtual DOM is just like a blueprint of a machine, can do changes in the blueprint but those changes will not directly apply to the machine.
+- Virtual DOM makes the performance faster, not because the processing itself is done in less time. The reason is the amount of changed information – rather than wasting time on updating the entire page, you can dissect it into small elements and interactions
+
+## Differences between Virtual DOM and Real DOM
+
+![image](https://github.com/gunjan2001/documentation/assets/85817658/fadc72b7-cb5b-4976-a0e9-45520da07e4b)
+
+
+## When to use a Class Component over a Function Component?
+- there are two reasons to use Class components over Function components.
+
+1. If you need a React functionality whose Function component equivalent is not present yet, like Error Boundaries.
+2. In older versions, If the component needs state or lifecycle methods then you need to use class component.
+
+
 ## if we have object whoose value not changing and we pass that object as props so is that child component will render ?
 
 - In React, when a component receives new props, it triggers a re-render by default, regardless of whether the props have changed. This behavior applies to both primitive values and object references passed as props.
@@ -100,19 +87,12 @@ function App(){
 
 - To optimize the rendering in cases where the object's value remains the same, you can use the React.memo higher-order component or the useMemo hook to memoize the child component. This prevents unnecessary re-renders if the props have not changed.
 
-# memo:
-
-- memo lets you skip re-rendering a component when its props are unchanged.
-- `const MemoizedComponent = memo(SomeComponent, arePropsEqual?)`
-- **arePropsEqual**: A function that accepts two arguments: the component’s previous props, and its new props. It should return true if the old and new props are equal: that is, if the component will render the same output and behave in the same way with the new props as with the old. Otherwise it should return false. Usually, you will not specify this function. By default, React will compare each prop with Object.is.
-- memo returns a new React component.
-
 ## React memo:
 
+- memo lets you skip re-rendering a component when its props are unchanged.
 - React.memo is a higher-order component (HOC) that memoizes the rendered output of the child component. It compares the previous and new props and re-renders the component only if there are differences. it implements shouldComponentUpdate.
-
 - React.memo performs a shallow comparison of the prop values. If the values are shallowly equal (using Object.is), the component is not re-rendered.
-
+- memo returns a new React component.
 - React.memo should not be overused, especially when the child component is lightweight or renders quickly. The memoization process itself has some overhead, so applying it to every component indiscriminately can introduce unnecessary complexity and potentially hinder performance
 
 ## Conditionals in JSX:
@@ -1319,3 +1299,7 @@ The ReactDOMServer object enables you to render components to static markup (typ
 - With JSX you pass a function as the event handler, rather than a string.
 
 --100 question
+
+# memo:
+
+- **arePropsEqual**: A function that accepts two arguments: the component’s previous props, and its new props. It should return true if the old and new props are equal: that is, if the component will render the same output and behave in the same way with the new props as with the old. Otherwise it should return false. Usually, you will not specify this function. By default, React will compare each prop with Object.is.
