@@ -76,25 +76,6 @@ function App(){
 1. If you need a React functionality whose Function component equivalent is not present yet, like Error Boundaries.
 2. In older versions, If the component needs state or lifecycle methods then you need to use class component.
 
-
-## if we have object whoose value not changing and we pass that object as props so is that child component will render ?
-
-- In React, when a component receives new props, it triggers a re-render by default, regardless of whether the props have changed. This behavior applies to both primitive values and object references passed as props.
-
-- If you pass an object reference as a prop to a child component and the object's value remains the same (i.e., the reference remains unchanged), the child component will still re-render.
-
-- React performs a shallow comparison of props to determine if a re-render is necessary. It compares the previous props with the new props by checking if the references are different. Since the object reference remains the same, React considers the props to have changed and triggers a re-render of the child component.
-
-- To optimize the rendering in cases where the object's value remains the same, you can use the React.memo higher-order component or the useMemo hook to memoize the child component. This prevents unnecessary re-renders if the props have not changed.
-
-## React memo:
-
-- memo lets you skip re-rendering a component when its props are unchanged.
-- React.memo is a higher-order component (HOC) that memoizes the rendered output of the child component. It compares the previous and new props and re-renders the component only if there are differences. it implements shouldComponentUpdate.
-- React.memo performs a shallow comparison of the prop values. If the values are shallowly equal (using Object.is), the component is not re-rendered.
-- memo returns a new React component.
-- React.memo should not be overused, especially when the child component is lightweight or renders quickly. The memoization process itself has some overhead, so applying it to every component indiscriminately can introduce unnecessary complexity and potentially hinder performance
-
 ## Conditionals in JSX:
 
 - for any particular conditions in our component we use ternary operator in our return block.
@@ -185,7 +166,8 @@ class UncontrolledInput extends React.Component {
 
 ## Differences:
 
-![image](https://github.com/gunjan2012/documentations/assets/125242584/61c6de95-3261-4e56-81f3-3710ca9ec607)
+![image](https://github.com/gunjan2001/documentation/assets/85817658/79f8cabf-2994-49ab-b3d8-9c1ddd02a0ab)
+
 
 ## What are React keys and why are they important?
 
@@ -275,10 +257,6 @@ export default HelloWorld;
 - It is a good idea to ensure that all the children components are also pure to avoid unexpected behaviour.
 - Never mutate the state. Always return a new object that reflects the new state.
 
-# Memo:
-
-- What is? : React Memo is a higher-order component that wraps around a component to memoize the rendered output and avoid unnecessary renderings.
-
 ## Higher Order Components (HOC):
 
 - To share common functionality between components
@@ -334,7 +312,6 @@ export default UpdatedComponent;
 class HOC_count extends Component {
   render() {
     const { count, incrementCount } = this.props;
-
     return (
       <div>
         <button onClick={incrementCount}>Count- {count}</button>
@@ -345,6 +322,33 @@ class HOC_count extends Component {
 
 export default UpdatedComponent(HOC_count);
 ```
+
+
+## if we have object whoose value not changing and we pass that object as props so is that child component will render ?
+
+- In React, when a component receives new props, it triggers a re-render by default, regardless of whether the props have changed. This behavior applies to both primitive values and object references passed as props.
+
+- If you pass an object reference as a prop to a child component and the object's value remains the same (i.e., the reference remains unchanged), the child component will still re-render.
+
+- React performs a shallow comparison of props to determine if a re-render is necessary. It compares the previous props with the new props by checking if the references are different. Since the object reference remains the same, React considers the props to have changed and triggers a re-render of the child component.
+
+- To optimize the rendering in cases where the object's value remains the same, you can use the React.memo higher-order component or the useMemo hook to memoize the child component. This prevents unnecessary re-renders if the props have not changed.
+
+## React memo:
+
+- memo lets you skip re-rendering a component when its props are unchanged.
+- React.memo is a higher-order component (HOC) that memoizes the rendered output of the child component. It compares the previous and new props and re-renders the component only if there are differences. it implements shouldComponentUpdate.
+- React.memo performs a shallow comparison of the prop values. If the values are shallowly equal (using Object.is), the component is not re-rendered.
+- memo returns a new React component.
+- Ex:
+```
+childComponent.jsx
+
+export default React.memo(ChildComponent);
+```
+- React.memo should not be overused, especially when the child component is lightweight or renders quickly.
+- The memoization process itself has some overhead, so applying it to every component indiscriminately can introduce unnecessary complexity and potentially hinder performance
+
 
 # props:
 
