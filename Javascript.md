@@ -18,7 +18,7 @@ There are at least three great things about JavaScript:
 - Simple things are done simply.
 - Supported by all major browsers and enabled by default.
 
-## Explain Hoisting in javascript.
+## 4. Explain Hoisting in javascript.
 
 - Hoisting is the default behaviour of javascript where all the variable and function declarations are moved on top.
 - This means that irrespective of where the variables and functions are declared, they are moved on top of the scope. The scope can be both local and global.
@@ -40,6 +40,34 @@ function hoistedFunction(){
   console.log(" Hello world! ");
 } 
 ```
+
+Example 3:
+
+```
+// Hoisting takes place in the local scope as well
+function doSomething(){
+  x = 33;
+  console.log(x);
+  var x;
+} 
+```
+
+**Note - Variable initializations are not hoisted, only variable declarations are hoisted:**
+
+```
+var x;
+console.log(x); // Outputs "undefined" since the initialization of "x" is not hoisted
+x = 23;
+```
+
+**Note - To avoid hoisting, you can run javascript in strict mode by using “use strict” on top of the code:**
+
+```
+"use strict";
+x = 23; // Gives an error since 'x' is not declared
+var x;
+```
+
 
 ## 4. What is dom(Document Object Model)?
 
@@ -64,44 +92,23 @@ function hoistedFunction(){
 - Using nothing: if you dont use any keyword name then it is automatically declare
 - Variables created without a declaration keyword (var, let, or const) are always global, even if they are created inside a function.
 
-## 8. what is hoisting in js?
-
-- Hoisting is JavaScript's default behavior of moving all declarations to the top of the current scope.
-
 ## 9. var vs let.
 
-- var is function scope and let is the block scope.
+- The var and let keywords in JavaScript are both used for declaring variables, but they differ significantly in their scoping rules and hoisting behavior.
+  
+1. Scoping:
+- **var** is function-scoped: A variable declared with var is accessible throughout the entire function in which it is declared
+- **let** is block-scoped: A variable declared with let is only accessible within the block (curly braces {}) where it is defined. This includes if statements, for loops, and other block-level constructs.
 
-- Variables declared by let are only available/accessible inside the block where they're defined. Variables declared by var are available/accessible throughout the function in which they're declared.
+2. Hoisting:
+- **var** variables are hoisted and initialized with undefined: Declarations made with var are "hoisted" to the top of their function scope, meaning you can reference them before their actual declaration in the code. However, they are initialized with undefined until the line of declaration is executed.
+- **let** variables are hoisted but not initialized: While let declarations are also hoisted, they are not initialized with a default value. Attempting to access a let variable before its declaration results in a ReferenceError due to the **"Temporal Dead Zone" (TDZ)**.
 
-- Hoisting is allowed with var. Where the hoisting is not allowed in let.
+3. Redeclaration:
+- **var** allows redeclaration: You can declare the same variable multiple times within the same scope using var without causing an error.
+- **let** prevents redeclaration within the same scope: Attempting to redeclare a let variable within the same block scope will result in a **SyntaxError**.
 
-  ![image](/images/Screenshot%20from%202023-03-10%2011-14-39.png)
-
-  ![image](/images/varvslet.png)
-
-  ![image](/images/varvslet2.png)
-
-## 10. const:
-
-- Use const when you declare:
-
-- A new Array
-- A new Object
-- A new Function
-- A new RegExp
-
-  ![image](/images/constvslet.png)
-  ![image](/images/const.png)
-
-## 11. JavaScript Arithmetic:
-
-- If you put a number in quotes, the rest of the numbers will be treated as strings, and concatenated.
-- `let x = "5" + 2 + 3; ------ ans: 523`
-
-  ![image](/images/arithmetic.png)
-
-## JavaScript has 2 Datatypes
+## 10 JavaScript has 2 Datatypes
 
 - primitive:
 
@@ -124,6 +131,26 @@ function hoistedFunction(){
 3. A date
 
 ![image](/images/datatypes.png)
+
+## 11. Explain Implicit Type Coercion in javascript.
+
+Example 1:
+
+```
+var x = 3;
+var y = "3";
+x + y // Returns "33" 
+```
+
+**Note - ‘ + ‘ operator when used to add two numbers, outputs a number. The same ‘ + ‘ operator when used to add two strings, outputs the concatenated string:**
+
+**Note - Type coercion also takes place when using the ‘ - ‘ operator, but the difference while using ‘ - ‘ operator is that, a string is converted to a number and then subtraction takes place.**
+
+```
+var x = 3;
+Var y = "3";
+x - y    //Returns 0 since the variable y (string type) is converted to a number type
+```
 
 ## What is the difference between undefined value and null value?
 
