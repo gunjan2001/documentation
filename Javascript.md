@@ -10,17 +10,36 @@
 
 - Babel is a free and open-source JavaScript transcompiler that is mainly used to convert ECMAScript 2015+(ES-6) code into backwards-compatible JavaScript code that can be run by older JavaScript engines. (If we want to convert new js functinality to old that work was done by babel.)
 
-## 3. what is js?
-
-- js is synchronous language. js is interpreted language means it no need of compiler it will directly run and gives runtime error.
-
-## What makes JavaScript unique?
+## 3. What makes JavaScript unique?
 
 There are at least three great things about JavaScript:
 
 - Full integration with HTML/CSS.
 - Simple things are done simply.
 - Supported by all major browsers and enabled by default.
+
+## Explain Hoisting in javascript.
+
+- Hoisting is the default behaviour of javascript where all the variable and function declarations are moved on top.
+- This means that irrespective of where the variables and functions are declared, they are moved on top of the scope. The scope can be both local and global.
+
+Example 1:
+
+```
+hoistedVariable = 3;
+console.log(hoistedVariable); // outputs 3 even when the variable is declared after it is initialized	
+var hoistedVariable;
+```
+
+Example 2: 
+
+```
+hoistedFunction();  // Outputs " Hello world! " even when the function is declared after calling
+
+function hoistedFunction(){ 
+  console.log(" Hello world! ");
+} 
+```
 
 ## 4. What is dom(Document Object Model)?
 
