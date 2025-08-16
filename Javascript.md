@@ -565,7 +565,6 @@ Ans: Mar -> march
 ### Functions are Objects
 
 - The typeof operator in JavaScript returns "function" for functions.
-
 - The toString() method returns the function as a string:
 
 ### Arrow Functions
@@ -668,6 +667,8 @@ console.log("a called");
 var b = function (){
 console.log("b called");
 }
+
+-- b();
 ```
 
 ## Difference between them:
@@ -729,175 +730,130 @@ In a web browser the global object is the browser window.
 
 ## Call, Apply and Bind Methods:
 
-- When used?
+- JavaScript provides the call(), apply(), and bind() methods for setting the this context within a function. These methods are especially useful when working with object-oriented code or handling different function contexts.
 
-- for example we have object which has two keys fname and lname and third key has `function` as a value and in that function i have access the object's value using `this` keyword.
+ **`call`** :
 
-- and we have another object which has diff fname and lname value and we have same function that has in first object so insted of writing the function again in second object we will simply define function explictly and we can use `.call` method and passing the object.
+ - The Call() Method calls the function directly and sets this to the first argument passed to the call method and if any other sequences of arguments preceding the first argument are passed to the call method then they are passed as an argument to the function.
 
-`call` : It is called function borrowing.we can pass extra argument by providing comas.
-
-- For ex:
+**Syntax:**
 
 ```
-let obj1 = {
-  firstname: "Gunjan",
-  lastname: "Dalwadi",
-  printFullName: function () {
-    console.log(this.firstname + " " + this.lastname);
-  },
-};
-name.printFullName();
-
-let obj2 = {
-  firstname: "Sachin",
-  lastname: "Tendulkar",
-};
-// function borrowing
-name.printFullName.call(name2);
+call(objectInstance)
+call(objectInstance, arg1, /* …, */ argN)
 ```
 
-- Insted of above you can write below using call.
+**Example:**
 
 ```
-let obj1 = {
-  firstname: "Gunjan",
-  lastname: "Dalwadi",
-};
-
-let obj2 = {
-  firstname: "G",
-  lastname: "D",
-};
-
-function xyz() {
-  console.log(this.firstname + " " + this.lastname);
+let nameObj = {
+    name: "Tony"
 }
 
-xyz.call(obj1);
-xyz.call(obj2);
+let PrintName = {
+    name: "steve",
+    sayHi: function (age) {
+        console.log(this.name + " age is " + age);
+    }
+}
 
+PrintName.sayHi.call(nameObj, 42); // Tony age is 42
 ```
 
 `apply` : Same but after writing objectname, if suppose function have extra argument then we can use `[ ]`.
 
+The Apply() Method calls the function directly and sets this to the first argument passed to the apply method and if any other arguments provided as an array are passed to the call method then they are passed as an argument to the function.
+
+Syntax:
 ```
-obj1{}
-obj2{}
-function(param1,param2){}
-function.call(obj1,param1,param2)
-function.apply(obj1,[param1,param2])
+apply(objectInstance)
+apply(objectInstance, argsArray)
+```
+
+```
+let nameObj = {
+    name: "Tony"
+}
+
+let PrintName = {
+    name: "steve",
+    sayHi: function (...age) {
+        console.log(this.name + " age is " + age);
+    }
+}
+PrintName.sayHi.apply(nameObj, [42]); // Tony age is 42
 ```
 
 - **we can use any of them, but apply will probably be faster, because most JavaScript engines internally optimize it better.**
 - **Passing all arguments along with the context to another function is called call forwarding.**
 
-`bind` : It is bind/append particular function with object. and creating the copy of the function. so when we directly log that we get the whole function. so we have to call it explicitaly.
+`bind` : The Bind() Method creates a new function and when that new function is called it set this keyword to the first argument which is passed to the bind method, and if any other sequences of arguments preceding the first argument are passed to the bind method then they are passed as an argument to the new function when the new function is called.
+
+Syntax:
+
+```
+bind(thisArg)
+bind(thisArg, arg1, arg2, /* …, */ argN)
+```
 
 **Example:**
 
-```
-function f() {
-  alert(this.name);
+```let nameObj = {
+    name: "Tony"
 }
-f = f.bind( {name: "John"} ).bind( {name: "Ann" } );
-f(); // return john because A function cannot be re-bound.
 
-```
+let PrintName = {
+    name: "steve",
+    sayHi: function () {
 
-```
-function sayHi() {
-  alert( this.name );
+        // Here "this" points to nameObj
+        console.log(this.name); 
+    }
 }
-sayHi.test = 5;
 
-let bound = sayHi.bind({
-  name: "John"
-});
-
-alert( bound.test ); // what will be the output? why?
+let HiFun = PrintName.sayHi.bind(nameObj);
+HiFun(); // Tony
 ```
-
-- The answer: undefined.
-- The result of bind is another object. It does not have the test property.
 
 ![image](/images/callapply.png)
 
-## Object:
+## Function Currying:
 
-- It is collection of element with key-value pairs.
-- Generally, the js engine will take the key and value as a string in backend. so we can define any of the way either string format using quotes or any general way.
+- Currying is used in JavaScript to break down complex function calls into smaller, more manageable steps. It transforms a function with multiple arguments into a series of functions, each taking a single argument.
 
-- Booleans can be objects (if defined with the new keyword)
-- Numbers can be objects (if defined with the new keyword)
-- Strings can be objects (if defined with the new keyword)
-- Dates are always objects
-- Maths are always objects
-- Regular expressions are always objects
-- Arrays are always objects
-- Functions are always objects
-- Objects are always objects
-- `All JavaScript values, except primitives, are objects`.
-- Objects are associative arrays with several special features.
-- **They store properties (key-value pairs), where:**
-- Property keys must be strings or symbols (usually strings).
-- Values can be of any type.
+- It converts a function with multiple parameters into a sequence of functions.
+- Each function takes a single argument and returns another function until all arguments are received.
 
-- **By default, a plain object has following toString and valueOf methods:**
+```
+// Normal Function
+// function add(a, b) {
+//     return a + b;
+// }
+// console.log(add(2, 3)); 
 
-- The **toString** method returns a string "[object Object]".
-- The **valueOf** method returns the object itself.
+// Function Currying
+function add(a) {
+    return function(b) {
+        return a + b;
+    }
+}
 
-- **All objects have prototypes, except for the base object. The base object is the object created by the user, or an object that is created using the new keyword. The base object has access to some methods and properties, such as .toString. This is the reason why you can use built-in JavaScript methods! All of such methods are available on the prototype. Although JavaScript can't find it directly on your object, it goes down the prototype chain and finds it there, which makes it accessible for you.**
+const addTwo = add(5);  // First function call with 5
+console.log(addTwo(4));
+```
+
+### With Arrow function:
+
+```
+const add = a => b => a + b;
+console.log(add(5)(4));
+```
 
 ##### Additional operators:
 
 - To delete a property: delete obj.prop.
 - To check if a property with the given key exists: "key" in obj.
 - To iterate over an object: for (let key in obj) loop.
-
-##### There are many other kinds of objects in JavaScript:
-
-- Array to store ordered data collections,
-- Date to store the information about the date and time,
-- Error to store the information about an error.
-
-![image](/images/keywithspace.png)
-
-![image](/images/keywithspacewithnoerror.png)
-
-## Creating the object:
-
-- There are different ways to create new objects:
-
-### using an object literal.
-
-```
-
-const person = {firstName:"John", lastName:"Doe", age:50, eyeColor:"blue"};
-
-```
-
-### with the keyword new.
-
-```
-
-const person = new Object();
-person.firstName = "John";
-person.lastName = "Doe";
-person.age = 50;
-person.eyeColor = "blue";
-
-```
-
-- Define an object constructor, and then create objects of the constructed type.
-- Create an object using `Object.create()`.
-- Objects are Mutable
-- The delete keyword deletes a property from an object
-
-## Computed properties
-
-- We can use square brackets in an object literal, when creating an object. That’s called computed properties.
 
 ## Property names limitations
 
@@ -1110,46 +1066,7 @@ console.log(alltoppings1);
 
 ### Arrays methods:
 
-1. tostring() method:
-
-- converts array to string. `arr_name.tostring();`
-
-2. join():
-
-- it will seperate elements with given operator. `arr_name.join("*")`
-- type of this is string.
-
-3. pop():
-
-- It will remove last element. it will change the original array.
-- `arr.pop()` it will return poped element.
-
-4. push():
-
-- It will add new element in array at last position. it will change the original array.
-- `arr.push(element)` it will return length of array.
-
-5. shift():
-
-- it will remove fist element and modified original array.
-- `arr.shift()` return first element.
-
-6. unshift():
-
-- it will add fist element and modified original array.
-- `arr.unshift(element)` return length of new array.
-
-7. delete (it is operator):
-
-- delete array element by giving position. but the array length is remain same its length is not decreasing.
-- `delete arr[position]`
-
-8. concat:
-
-- it will concat the two array. not change existing array.
-- `newarray = arr1.concat(arr2,arr3,arr4,arr5)`
-
-9. sort:
+1. sort:
 
 - it will sort the array and changed the original array.
 - it will sort array alphabetically. means it will take element as an strings.
@@ -1167,109 +1084,6 @@ then arr.sort(comapre).
 
 ```
 
-10. reverse:
-
-- it will reverse the array.
-
-11. splice:
-
-- syntax: .splice(start_position, howmany_elements to remove from position you have given , list of elements)
-- returns deleted values and modified original array.
-
-12. slice:
-
-- syntax: slice(start-position,end-pos_but-not-included)
-- it will not modified original array.
-- returns sliced array .
-
-13. find:
-
-- it will return first value that has pass the condition given in fucntion.
-- arr.find(function_name or define function)
-
-14. findIndex:
-
-- it will return the index of first element that pass the condition given in fucntion.
-- arr.findIndex(function_name or define function)
-
-15. some():
-
-- It will return the true or false value for array that's some value pass conditions or not.
-
-16. every():
-
-- It will return the true or false value for array that's all value pass conditions or not.
-
-## looping in array:
-
-1. forEach():
-
-- synatx: arr.forEach((ele)=>{ console.log(ele \* ele) }) // print the square of array element
-
-2. Array.from() method:
-
-- used to create an array from object.
-- also create an array from string.
-- `Array.from(string_name);`
-- ex:
-  let str = "Gunjan"; </br>
-  console.log(Array.from(str));
-
-  output:
-  ['G', 'u', 'n', 'j', 'a', 'n']
-
-3. for.....of:
-
-- return list of array elements.
-- syntax: `for(let item of arr){ console.log(item) }`
-
-4. for.....in:
-
-- return list of array element's position or index.
-- syntax: `for(let i of arr){ console.log(i) }` //return the indexes
-- syntax: `for(let i of arr){ console.log(arr[i]) }` //return the elements
-
-## map filter and reduce:(Higher order array methods)
-
-### 1. Map vs forEach:
-
-- syntax : `.map(value, index, array)`
-- `map` is create the new array (by return the values and it is a function) where `forEach` will perform some operation on existing array(it is basically a loop).
-- example of map:
-
-  ![image](/images/arraymap.png)
-
-### WeakMap
-
-- The first difference between Map and WeakMap is that keys must be objects, not primitive values:
-
-### 2. filter:
-
-- this will apply on array for each item the condition become true that item it will return and create a new array.
-- newarray = arr.filter((num)=>{ </br>
-  return num<20 ; </br>
-  })
-
-- this will not changed our original array.
-
-### 3. reduce:
-
-- it will return the single value not an array.
-- syntax: arr.reduce(function_name or function)
-
-  ![image](/images/reduce.png) </br>
-
-- this will return 14 only.
-- The reduceRight() works from right-to-left in the array. The reduceRight() method does not reduce the original array.
-
-```
-[1, 2, 3, 4].reduce((x, y) => console.log(x, y));
-```
-
-- The first argument that the reduce method receives is the accumulator, x in this case. The second argument is the current value, y. With the reduce method, we execute a callback function on every element in the array, which could ultimately result in one single value.
-- In this example, we are not returning any values, we are simply logging the values of the accumulator and the current value.
-- The value of the accumulator is equal to the previously returned value of the callback function. If you don't pass the optional initialValue argument to the reduce method, the accumulator is equal to the first element on the first call.
-
 # DOM Manipulation:
 
 ## Adding elements using js:
@@ -1285,7 +1099,7 @@ then arr.sort(comapre).
 - body.append(div);
 - div.innerText = "hello";
 
-### Diff between innerText and textContent
+## Diff between innerText and textContent
 
 - when we log innerText it will print in one line where the textContent will print same as it is define in our html file with all indentation.
 
@@ -1344,37 +1158,12 @@ December = 11.
 
 ```
 
-## Math Object:
-
-https://www.w3schools.com/js/js_math.asp
-
 ## typeof keyword:
 
 - typeof array, object, null, regExp are `object`.
 - typeof string is string.
 - typeof number,NaN are number.
 - typeof undefine is undefine.
-
-## Type Conversion / Type Casting:
-
-- Implicit : It will autometically converts to other type. like '1' + 3 ans is 13 as string
-- Explicit type casting/conversion: String(value) or .toString(), Number(value), Boolean(value) function
-
-### Converting Strings to Numbers:
-
-- `Number(value)`.
-- A numeric string (like "3.14") converts to a number (like 3.14).
-- An empty string (like "") converts to 0.
-- A non numeric string (like "John") converts to NaN (Not a Number).
-
-### Converting Numbers to Strings:
-
-- String(here) or number.toString()
-
-## Type coercion
-
-- Type coercion is the automatic or implicit conversion of values from one data type to another
-- one key difference — type coercion is implicit whereas type conversion can be either implicit or explicit.
 
 ## Declaring Strict Mode
 
