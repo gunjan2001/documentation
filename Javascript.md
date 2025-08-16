@@ -71,7 +71,7 @@ var x;
 
 ## 4. What is dom(Document Object Model)?
 
-- it is an api for html & xml documents which provide structure representation for html documents.
+- The Document Object Model (DOM) is a programming interface for HTML and XML documents. It represents the structure of a document as a tree of objects, where each object corresponds to a part of the document, such as an element, attribute, or text. 
 
   ![image](/images/Screenshot%20from%202023-03-10%2010-35-10.png)
 
@@ -79,11 +79,10 @@ var x;
 
 - Placing scripts at the bottom of the `<body>` element improves the display speed, because script interpretation slows down the display.
 
-## 6. what is linting our code?
+- Inside the <head> section: Scripts placed here are loaded and executed before the <body> content. This is suitable for functions or global variables that need to be available early in the page load.
+- Before the closing </body> tag: Placing scripts here allows the HTML content to load and render before the JavaScript executes.
 
-- It is a tool used to analyze our code and catch the errors. it gives us warnings and errors in our terminal window.
-
-## 7. 4 Ways to Declare a JavaScript Variable:
+## 6. 4 Ways to Declare a JavaScript Variable:
 
 - Since JavaScript treats a dollar sign as a letter, identifiers containing $ are valid variable names.
 - Using var : if we have not intialize with value it will log undefined in console.
@@ -209,24 +208,33 @@ if a isn’t defined, then b.
 
 ## truthy values & falsy values using `!!`:
 
-![image](/images/truthyfalsy.png)
+- The following values are considered falsy in JavaScript:
+  - false
+  - 0 (the number zero)
+  - -0 (negative zero)
+  - 0n (BigInt zero)
+  - "", '', `` `` (empty strings)
+  - null
+  - undefined
+  - NaN (Not-a-Number)
+
+- All other values are considered truthy. This includes:
+  - Non-zero numbers (e.g., 1, -5, 3.14)
+  - Non-empty strings (e.g., "hello", "false", "0")
+  - Objects (including empty objects {} and arrays [])
+  - Functions
+  - true itself
 
 ## Ternary statement `? :` :
-
-![image](/images/ternary.png)
 
 ## Switch statement:
 
 - In switch, the cases will use the `===` for comparision not `==`.
 - Switch cases use strict comparison (===).
 
-  ![image](/images/switch.png)
-
 ## Numbers:
 
 - Numbers come in the blue colour and string in black colour.
-
-![image](/images/numbers.png)
 
 ## JavaScript Integer Accuracy:
 
@@ -246,6 +254,9 @@ if a isn’t defined, then b.
 
 ## isNaN() function:
 
+- NaN property represents the “Not-a-Number” value. It indicates a value that is not a legal number.
+- typeof of NaN will return a Number.
+
 - isNaN() to find out if a value is a not a number.
 - `NaN is a number: typeof NaN returns number`.
 - `Infinity is a number: typeof Infinity returns number.`
@@ -259,34 +270,6 @@ if a isn’t defined, then b.
 ```
 alert( NaN === NaN ); // false
 ```
-
-## isFinite(value)
-
--it converts its argument to a number and returns true if it’s a regular number, not NaN/Infinity/-Infinity:
-
-```
-alert( isFinite("15") ); // true
-alert( isFinite("str") ); // false, because a special value: NaN
-alert( isFinite(Infinity) ); // false, because a special value: Infinity
-```
-
-## Number.isNaN() or Number.isInteger():
-
-![image](/images/isinteger.png)
-
-## The Number.isInteger() Method
-
-- The Number.isInteger() method returns true if the argument is an integer.
-
-## Converting input into integer and float:
-
-![image](/images/parseInt.png)
-
-## JavaScript Number Properties:
-
-![image](/images/number-properties.png)
-
-- `console.log(Number.prototype)` : gives us all the functions name that supports that number and give the info about object.
 
 ## Number Methods:
 
@@ -309,11 +292,21 @@ alert( isFinite(Infinity) ); // false, because a special value: Infinity
 ## Comparing strings
 
 - As we know from the chapter Comparisons, strings are compared character-by-character in alphabetical order.
-- A lowercase letter is always greater than the uppercase:
+- A lowercase letter is always greater than the uppercase:  
+
+## Number Methods:
+
+- Basic number methods can be used on any number:
+
+- toString() : The toString() method returns a number as a string.
+- toExponential() : toExponential() returns a string, with a number rounded and written using exponential notation.
+- toFixed() : toFixed() returns a string, with the number written with a specified number of decimals:
+- toPrecision() : toPrecision() returns a string, with a number written with a specified length:
+- valueOf() : valueOf() returns a number as a number
 
 ## Strings & Template Literals:
 
-- ways: ` `(backticks) , " " , ' '.
+- ways: ` `` `(backticks) , " " , ' '.
 
 - Template Literals use back-ticks (``) rather than the quotes ("") to define a string:
 - The \ method is not the preferred method. It might not have universal support.
@@ -325,6 +318,16 @@ alert( isFinite(Infinity) ); // false, because a special value: Infinity
 ## String with const:
 
 ![image](/images/immutablestrings.png)
+
+## String Methods:
+
+- **Javascript strings are primitive and immutable: All string methods produce a new string without altering the original string.**
+
+- There are 3 methods for extracting a part of a string:
+
+- slice(start, end)
+- substring(start, end)
+- substr(start, length)
 
 ## slice()
 
@@ -348,6 +351,27 @@ alert( isFinite(Infinity) ); // false, because a special value: Infinity
 - It will trim the whitespace string from begin and end.
 
 ![image](/images/trim.png)
+
+## padStart()
+
+- The padStart() method pads a string from the start.
+- It pads a string with another string (multiple times) until it reaches a given length.
+
+```
+Pad a string with "0" until it reaches the length 4:
+
+let text = "5";
+let padded = text.padStart(4,"0");
+```
+
+## repeat():
+- The repeat() method returns a string with a number of copies of a string.
+- The repeat() method returns a new string.
+- The repeat() method does not change the original string.
+
+```
+string.repeat(count)
+```
 
 ## Extracting String Characters:
 
@@ -401,6 +425,132 @@ alert( isFinite(Infinity) ); // false, because a special value: Infinity
 - let firstName = "John";
 - let lastName = "Doe";
 - let text = `Welcome ${firstName}, ${lastName}!`;
+
+## JavaScript Array Methods
+
+- at():	Returns an indexed element of an array
+- concat():	Joins arrays and returns an array with the joined arrays
+- constructor : Returns the function that created the Array prototype
+- copyWithin():	Copies array elements within the array, to and from specified positions
+- entries():	Returns a key/value pair Array Iteration Object
+- every():	Checks if every element in an array pass a test
+
+```
+// Create an Array
+const ages = [32, 33, 16, 40];
+
+// Create a Test Function
+function checkAge(age) {
+  return age > 18;
+}
+
+// Are all ages over 18?
+ages.every(checkAge);
+```
+
+- fill():	Fill the elements in an array with a static value
+
+- The fill() method fills specified elements in an array with a value.
+- The fill() method overwrites the original array.
+- Start and end position can be specified. If not, all elements will be filled.
+
+```
+Syntax
+array.fill(value, start, end)
+```
+
+- **filter()**:	Creates a new array with every element in an array that pass a test
+- find():	Returns the value of the first element in an array that pass a test
+- findIndex():	Returns the index of the first element in an array that pass a test
+- findLast():	Returns the value of the last element in an array that pass a test
+- findLastIndex():	Returns the index of the last element in an array that pass a test
+- **flat()**:	Concatenates sub-array elements
+- flatMap():	Maps all array elements and creates a new flat array
+
+```
+const myArr = [1, 2, 3, 4, 5, 6];
+const newArr = myArr.flatMap(x => [x, x * 10]);
+
+Output: 1,10,2,20,3,30 ...
+```
+
+- forEach():	Calls a function for each array element
+- from():	Creates an array from an object
+
+```
+let text = "ABCDEFG";
+Array.from(text);
+
+Ans: A,B,C,D,E,F,G
+```
+- includes():	Check if an array contains the specified element
+
+```
+Syntax
+array.includes(element, start)
+```
+
+- indexOf():	Search the array for an element and returns its position
+- isArray():	Checks whether an object is an array
+- **join()**:	Joins all elements of an array into a string
+- **keys()**:	Returns a Array Iteration Object, containing the keys of the original array
+- lastIndexOf():	Search the array for an element, starting at the end, and returns its position
+- length:	Sets or returns the number of elements in an array
+- map():	Creates a new array with the result of calling a function for each array element
+- of():	Creates an array from a number of arguments
+
+```
+let fruits = Array.of("Banana", "Orange", "Apple", "Mango");
+Ans: [ "Banana", "Orange", "Apple", "Mango" ]
+```
+
+- **pop():**	Removes the last element of an array, and returns that element
+- **push():**	Adds new elements to the end of an array, and returns the new length
+
+- reduce():	Reduce the values of an array to a single value (going left-to-right)
+
+```
+const numbers = [175, 50, 25];
+
+document.getElementById("demo").innerHTML = numbers.reduce(myFunc);
+
+function myFunc(total, num) {
+  return total - num;
+}
+```
+- reduceRight():	Reduce the values of an array to a single value (going right-to-left)
+
+- reverse():	Reverses the order of the elements in an array, The reverse() method overwrites the original array.
+
+- **shift()**:	Removes the first element of an array, and returns that element
+- **unshift()**:	Adds new elements to the beginning of an array, and returns the new length
+
+- slice():	Selects a part of an array, and returns the new array
+- some():	Checks if any of the elements in an array pass a test
+- sort():	Sorts the elements of an array
+
+- splice():	Adds or Removes array elements
+
+- toReversed():	Reverses the order of array elements (to a new array)
+- toSorted():	Sorts the elements of an array (to a new array)
+- toSpliced():	Adds or Removes array elements (to a new array)
+
+- toString():	Converts an array to a string, and returns the result
+- valueOf():	Returns the primitive value of an array
+
+- with():	Returns a new array with updated elements
+- The with() method updates a specified array element.
+- The with() method returns a new array.
+
+```
+array.with(index, value)
+
+
+const months = ["Januar", "Februar", "Mar", "April"];
+const myMonths = months.with(2, "March");
+
+Ans: Mar -> march
+```
 
 ## Functions:
 
