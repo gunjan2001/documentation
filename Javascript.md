@@ -1099,26 +1099,24 @@ then arr.sort(comapre).
 - body.append(div);
 - div.innerText = "hello";
 
-## Diff between innerText and textContent
+## html Methods:'
 
-- when we log innerText it will print in one line where the textContent will print same as it is define in our html file with all indentation.
-
-3. innerHTML:
+1. innerHTML:
 
 - `div.innerHTML = "<b>Welcome</b>";`
 
-4. remove html element:
+2. remove html element:
 
 - const bold = document.querySelector("b");
 - bold.remove();
 
-5. getattribute and setAttribute:
+3. getattribute and setAttribute:
 
 - console.log(bold1.getAttribute("title"));
 - console.log(bold1.setAttribute("title", "Italic text"));
 - console.log(bold1.title);
 
-6. class:
+4. class:
 
 - `bold1.classList.add("b3");` // add class to existing element
 - `bold1.classList.remove("b1");` // remove class to existing element
@@ -1169,57 +1167,6 @@ December = 11.
 
 - Strict mode is declared by adding "use strict"; to the beginning of a script or a function.
 
-## JavaScript Modules:
-
-- JavaScript modules allow you to break up your code into separate files.
-- This makes it easier to maintain a code-base.
-- Modules are imported from external files with the import statement.
-- As modules support special keywords and features, we must tell the browser that a script should be treated as a module, by using the attribute `<script type="module">`
-- In a module, “this” is undefined.
-
-## Core module features
-
-- Always `“use strict”` : Modules always work in strict mode. E.g. assigning to an undeclared variable will give an error.
-
-## Import:
-
-**1. `Import *`**
-
-- Usually, we put a list of what to import in curly braces import {...}, like this:
-- But if there’s a lot to import, we can import everything as an object using import \* as <obj>, for instance:
-
-```
-import * as say from './say.js';
-
-say.sayHi('John');
-say.sayBye('John');
-```
-
-**2. Import “as”**
-
-- We can also use as to import under different names.
-- For instance, let’s import sayHi into the local variable hi for brevity, and import sayBye as bye:
-
-```
-import {sayHi as hi, sayBye as bye} from './say.js';
-```
-
-**Export “as”**
-
-- The similar syntax exists for export.
-- Let’s export functions as hi and bye:
-
-## Export:
-
-- There are two types of exports: Named Exports and Default Exports.
-
-**Named export** :
-export class User {...} export default class User {...}
-**Default export**
-import {User} from ... import User from ...
-
-- **Please note that import/export statements don’t work if inside {...}**
-
 ## How JavaScript Code is executed?
 
 - First it will create the global execution context which has two components:
@@ -1266,9 +1213,6 @@ var a = 100;
 ```
 
 - this will throw an error named a already declare.
-
-- if we used function here so it will not throw error because it is
-
 - so when we do shadowing that second variable cannot be accessible outside of its scope.if we used let it will not throw error.
 
 5. lexical scoping:
@@ -1278,12 +1222,73 @@ var a = 100;
 ## Closures:
 
 - function along with it's lexical scope forms a closures.
+- A closure is a function that retains access to its outer function's variables, even after the outer function has finished executing.
+- It "remembers" the environment in which it was created, allowing it to access variables outside its immediate scope.
 
-![image](/images/closures.png)
+```
+function outer() {
+    let outerVar = "I'm in the outer scope!";
+    function inner() {
+        console.log(outerVar); 
+        outerVar = "Updated"
+    }
+    return inner;  
+}
+const closure = outer(); 
+closure(); //
+closure();
 
-- in this the y will maintain their lexical scope or connection with its parent functions or scopes. means by this it will not store their value in garbage but yes it will store the reference of particular variable not that value.
+- I'm in the outer scope!
+- Updated
+```
 
-![image](/images/function%20closures.png)
+- The function inner() forms a closure by retaining access to outerVar, which is a variable in the scope of outer().
+- Even though outer() has completed execution, inner() still has access to outerVar due to the closure.
+
+
+## What are Callbacks in JavaScript?
+In JavaScript, callbacks are functions that are passed as arguments from one function to another and are executed after the completion of a certain task. They are commonly used in asynchronous operations, such as reading files, making HTTP requests, or handling user input.
+
+- A function can accept another function as a parameter.
+- Callbacks allow one function to call another at a later time.
+- A callback function can execute after another function has finished.
+
+- Ex: settimeout, setinterval
+
+```
+function greet(name, callback) {
+    console.log(`Hello, ${name}!`);
+    callback();  // calling the callback function
+}
+
+function afterGreet() {
+    console.log('Greeting is complete!');
+}
+
+greet('Anjali', afterGreet);
+```
+
+## Callback Hell (Pyramid of Doom)
+
+- When multiple asynchronous operations depend on each other, callbacks get deeply nested, making the code hard to read and maintain.
+- Callback Hell in JavaScript can be defined as the situation where we have nested callbacks(functions passed as arguments to other functions) which makes the code difficult to read and debug.
+
+## Solution to Callback Hell
+
+- Promises
+- Promises can help in avoiding the callback hell by providing the structured way to handle the asynchronous operations using the .then() method.
+- Due to which the code becomes more readable by avoiding the deeply neseted callbacks.
+
+## Export:
+
+- There are two types of exports: Named Exports and Default Exports.
+
+**Named export** :
+export class User {...} export default class User {...}
+**Default export**
+import {User} from ... import User from ...
+
+- **Please note that import/export statements don’t work if inside {...}**
 
 # Asynchronous Javascript:
 
@@ -1324,44 +1329,9 @@ clearInterval(myInterval);
 
 - **Nested setTimeout allows to set the delay between the executions more precisely than setInterval.**
 
-## Callbacks:
-
-- it is a functions that is sent as an input to another functions or return particular function in one function.
-- plays a main role in writing code in asynchronous javascript
-- callbacks functions are the functions that sometimes else called.
-- examples:
-
-```
-
-setTimeout(function () {
-console.log(x);
-}, x \* 1000);
-
-```
-
-- here the function is called callbacks functions.means it will call after sometime.
-- there are two issues that are in callbacks: 1. callback hell 2. inversion of control
-
-## Callback Hell:
-
-- when we are using callbacks for our async javascript then it will become large nested callback and this is called callback hell.In this our code will increase horizontally not vertically.
-
-```
-
-// Callback hell
-createOrder(cart, function (orderId) {
-proceedToPayment(orderId, function (paymentInfp) {
-showOrderSummary(paymentInfp, function () {
-updateWalletBalance();
-});
-});
-});
-
-```
-
 ## Inversion of control:
 
-- means we are giving our function's control in some other api so it will be risky if API has not calling our function or it call our function many time so this are issues are occur when we use callbacks in our async js.
+- means we are giving our function's control in some other api so it will be risky if API has not calling our function or it call our function many time so this are issues are occur when we use callbacks in our async js.1
 
 ## Promises:
 
