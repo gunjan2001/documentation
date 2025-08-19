@@ -909,6 +909,41 @@ const [state, dispatch] = useReducer(reducer, initialArg, init);
 - **Lazy initialization**
 - You can also create the initial state lazily. To do this, you can pass an **init** function as the third argument. The initial state will be set to **init(initialArg)**.
 
+```
+import React, { useReducer } from "react";
+
+// Reducer function
+const reducer = (state, action) => {
+  switch (action.type) {
+    case "INCREMENT":
+      return { count: state.count + 1 };
+    case "DECREMENT":
+      return { count: state.count - 1 };
+    default:
+      return state;
+  }
+};
+
+const Counter = () => {
+  // Initial state
+  const initialState = { count: 0 };
+
+  // useReducer hook
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  return (
+    <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <h2>Counter: {state.count}</h2>
+      <button onClick={() => dispatch({ type: "DECREMENT" })}>-</button>
+      <button onClick={() => dispatch({ type: "INCREMENT" })}>+</button>
+    </div>
+  );
+};
+
+export default Counter;
+
+```
+
 ## useReducer with useContext:
 
 - if we want to pass a global state to particular child component which are in nesting so we can use useReducer with useContext.
