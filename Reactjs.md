@@ -861,6 +861,28 @@ In Child Component where we have to use this value:
 
 ```
 
+## for Functional component:
+
+```
+In App.jsx
+
+//step 1
+export const UserContext = createContext();
+// 2 wrap with provider
+// 3 pass value to provider
+// 4 consumer -- Component where we have to use for eg: In Child component write below code
+const user = useContext(UserContext);
+
+return (
+<>
+// 3 pass value to provider
+<UserContext.Provider value={data}>
+	<Parent />
+</UserContext.Provider>
+<>
+)
+```
+
 ## Other way useContext hook:
 
 - In child component first import the context which are created in main component.
