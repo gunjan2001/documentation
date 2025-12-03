@@ -107,6 +107,28 @@ var x;
 - **var** allows redeclaration: You can declare the same variable multiple times within the same scope using var without causing an error.
 - **let** prevents redeclaration within the same scope: Attempting to redeclare a let variable within the same block scope will result in a **SyntaxError**.
 
+## Temporal Dead Zone (TDZ):
+- The Temporal Dead Zone (TDZ) is the period in JavaScript where a variable declared with let or const is in a "dead zone" and cannot be accessed. This zone starts at the beginning of a block's scope (like a function or curly braces {...}) and ends when the variable is actually declared and initialized. During this time, the variable exists in memory but is uninitialized, so any attempt to access it will result in a ReferenceError.
+
+```
+function exampleFunction() {
+  // This is the start of the Temporal Dead Zone for 'myVariable'
+  // console.log(myVariable); // This would throw a ReferenceError
+
+  let myVariable = 10; // The TDZ ends here
+  console.log(myVariable); // This will work correctly
+}
+
+exampleFunction();
+
+```
+**Benefits:**
+
+- The TDZ helps prevent bugs by stopping developers from using variables before they are properly initialized.
+- It makes code more predictable and easier to understand.
+
+
+
 ## 10 JavaScript has 2 Datatypes
 
 - primitive:
