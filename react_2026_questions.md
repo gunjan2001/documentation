@@ -1,3 +1,19 @@
+# What is the Virtual DOM in React? Why is it useful?
+
+**STRONG ANSWER**: "The Virtual DOM is a lightweight JavaScript representation of the actual DOM. Here's how it works:
+
+- State changes trigger React to create a new Virtual DOM tree
+- Diffing algorithm compares new Virtual DOM with previous one
+- Reconciliation identifies minimal changes needed
+- Batch update applies only necessary changes to real DOM
+
+Benefits:
+
+- **Performance**: Only updates changed elements instead of re-rendering entire page
+- **Efficiency**: Batches multiple updates together
+
+---
+
 # 1. What is React and why is it efficient?
 - 
 ---
