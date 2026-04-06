@@ -73,6 +73,14 @@ Benefits:
 
 **Important: async functions always return a Promise, and await only works inside async functions.**
 
+## Name a few techniques to optimize React app performance.
+
+- Memorization: Enhance performance by memoizing functions and components, preventing unnecessary re-renders.
+- Code Splitting: Divide your code into smaller segments and load them selectively based on necessity.
+- Lazy Loading: Employ React's `lazy()` and `Suspense` to load components lazily.
+- Optimize Renders: Use PureComponent, or React.memo to prevent unnecessary renders.
+- Server-Side Rendering (SSR): Optimize initial load times by rendering components on the server side.
+
 ## What is the most challenging task you handled in your project?
 - 
 ---
@@ -93,6 +101,7 @@ Benefits:
 ---
 
 # Database:
+- MongoDB is an open-source NoSQL database written in C++ language. It uses JSON-like documents with optional schemas.
 
 ## What is MongoDB and why use it over SQL databases?
 
@@ -153,6 +162,8 @@ db.myCollection.aggregate([
 ])
 ```
 
+## 
+
 ## What is CORS and why did you use it?
 
 - CORS (Cross-Origin Resource Sharing) is a security mechanism that allows controlled access to resources from different origins.
@@ -182,6 +193,13 @@ app.use(cors({
 
 # NodeJs:
 
+##  What is REPL In Node JS?
+
+- READ – This reads the input provided by the user, parses it into JavaScript data structure, and stores it in the memory.
+- EVAL – This executes the data structure.
+- PRINT – This prints the outcome generated after evaluating the command.
+- LOOP – This loops the above command until the user presses Ctrl+C twice.
+
 ## What are streams in Nodejs?
 - A stream is a sequence of the data that is being moved from one point to another point over time.
 - In streams the data is arrived in the chunks and we can watch the chunks and the rest of the data arrives over time.
@@ -194,6 +212,17 @@ app.use(cors({
 - If there is data already processed or too little data to process, Node puts the arriving data in the buffer.
 - It is an intentionally small area that node maintains in the runtime to process a stream of data.
 
+## Have you worked with GraphQL? What are its benefits over REST?
+- Yes! GraphQL is a query language for APIs.
+
+**Key benefits of GraphQL over REST:**
+
+1. Precise data fetching - You request exactly the fields you need, nothing more. With REST, you often get over-fetching (too much data) or under-fetching (requiring multiple requests). GraphQL lets you specify your data shape in the query itself.
+2. Single endpoint - Instead of multiple REST endpoints (/users, /users/:id/posts, /posts/:id/comments), GraphQL typically uses one endpoint where you send different queries.
+3. Eliminates multiple round trips - You can fetch related data in a single request. For example, getting a user, their posts, and comments on those posts requires one GraphQL query instead of three REST calls.
+4. Strong typing - GraphQL schemas are strongly typed, providing better documentation, validation, and tooling. You know exactly what fields are available and their types.
+5. Introspection - Clients can query the schema itself to discover what's possible, enabling powerful developer tools and auto-completion.
+6. Versioning becomes easier - Instead of versioning endpoints (/v1/users, /v2/users), you evolve the schema by deprecating fields while maintaining backward compatibility.
 
 # Behavioral Questions
 
