@@ -1,3 +1,26 @@
+# Javascript:
+
+## Temporal Dead Zone (TDZ):
+- The Temporal Dead Zone (TDZ) is the period in JavaScript where a variable declared with let or const is in a "dead zone" and cannot be accessed. This zone starts at the beginning of a block's scope (like a function or curly braces {...}) and ends when the variable is actually declared and initialized. During this time, the variable exists in memory but is uninitialized, so any attempt to access it will result in a ReferenceError.
+
+```
+function exampleFunction() {
+  // This is the start of the Temporal Dead Zone for 'myVariable'
+  // console.log(myVariable); // This would throw a ReferenceError
+
+  let myVariable = 10; // The TDZ ends here
+  console.log(myVariable); // This will work correctly
+}
+
+exampleFunction();
+
+```
+**Benefits:**
+
+- The TDZ helps prevent bugs by stopping developers from using variables before they are properly initialized.
+- It makes code more predictable and easier to understand.
+
+
 # ReactJs:
 
 ## What is the Virtual DOM in React? Why is it useful?
@@ -50,28 +73,13 @@ Benefits:
 
 **Important: async functions always return a Promise, and await only works inside async functions.**
 
-## What is React and why is it efficient?
-- 
----
-## How does React work internally?
-- 
----
 ## What is the most challenging task you handled in your project?
 - 
 ---
 ## Is JavaScript tightly coupled or loosely coupled?
 - 
 ---
-## 5. Why do we use TypeScript?
-- 
----
-## 6. How does "extends" work in TypeScript and what is the difference between type and interface?
-- 
----
 ## 7. How does Redux work, from installation to usage in a project?
-- 
----
-## 8. Have you used Redux Toolkit (RTK) or TanStack Query?
 - 
 ---
 ## 9. What is the difference between bind and apply in JavaScript?
@@ -130,6 +138,20 @@ Why we need it:
 ## what is collections in the MongoDB?
 - Collections is the set of documents.
 - In simple terms collection is our table name, and data which was stored in this named as documents.
+
+## What is the term "indexing" in the Mongodb?
+- In mongodb, indexing plays a crucial role in optimizing the query resolutions.
+- Essentially, an index stores a compact portion of the dataset in a format, conductive to efficient traversal.
+
+## How can you use the like operator to query MongoDB?
+
+- In MongoDB, you can implement a functionality similar to the "like" operator by employing regular expressions with the `$regex` operator in the `$match` pipeline stage of an aggregation query. For instance, the subsequent query identifies documents in which the "name" field commences with "Nick":
+
+```
+db.myCollection.aggregate([
+  { $match: { name: { $regex: /^Nick/ } } }
+])
+```
 
 ## What is CORS and why did you use it?
 
