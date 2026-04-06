@@ -117,6 +117,76 @@ Benefits:
 5. Team needs consistent, predictable patterns
 6. Performance optimization is critical
 
+## What are Pure Components, Higher-Order Components, Controlled and Uncontrolled Components in React?
+
+- 1. Pure Components
+A Pure Component is a component that only re-renders when its props or state actually change (shallow comparison).
+
+```
+// Class component
+class UserCard extends React.PureComponent {
+  render() {
+    return <div>{this.props.name}</div>;
+  }
+}
+
+// Functional component equivalent
+const UserCard = React.memo(({ name }) => {
+  return <div>{name}</div>;
+});
+```
+
+2. Higher-Order Components (HOCs):
+- A Higher-Order Component is a function that takes a component and returns a new enhanced component. It's a pattern for reusing component logic.
+
+```
+// HOC that adds loading state
+function withLoading(Component) {
+  return function WithLoadingComponent({ isLoading, ...props }) {
+    if (isLoading) return <div>Loading...</div>;
+    return <Component {...props} />;
+  };
+}
+
+// Usage
+const UserList = ({ users }) => (
+  <ul>{users.map(u => <li key={u.id}>{u.name}</li>)}</ul>
+);
+
+const UserListWithLoading = withLoading(UserList);
+
+// Now you can use: <UserListWithLoading isLoading={true} users={[]} />
+```
+
+Common use cases:
+
+1. Authentication checks (withAuth)
+2. Data fetching (withData)
+3. Adding analytics
+4. Theming
+
+3. Controlled Components
+A Controlled Component is a form element whose value is controlled by React state.
+
+Benefits:
+
+- Single source of truth (React state)
+- Easy to validate, format, or transform input
+- Can disable submit based on validation
+- Predictable behavior
+
+4. Uncontrolled Components
+- An Uncontrolled Component stores its own state internally (in the DOM), and you access it using refs.
+
+When to use uncontrolled:
+
+- File inputs (must be uncontrolled)
+- Integrating with non-React libraries
+- Simple forms where you only need values on submit
+- Performance optimization for large forms (fewer re-renders)
+
+
+
 ## What is the most challenging task you handled in your project?
 - 
 ---
@@ -235,6 +305,13 @@ app.use(cors({
 - EVAL – This executes the data structure.
 - PRINT – This prints the outcome generated after evaluating the command.
 - LOOP – This loops the above command until the user presses Ctrl+C twice.
+
+## The Node.js Event Loop - How It Works:
+
+- Node.js is single-threaded but handles asynchronous operations efficiently through the event loop - a mechanism that continuously checks for and executes callbacks from completed async operations.
+
+- Core Concept:
+- When you make an async call (file I/O, network request, timer), Node.js delegates it to the system (or libuv's thread pool), continues executing other code, and the event loop later picks up the callback when the operation completes.
 
 ## What are streams in Nodejs?
 - A stream is a sequence of the data that is being moved from one point to another point over time.
