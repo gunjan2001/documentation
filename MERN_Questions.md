@@ -127,6 +127,10 @@ Why we need it:
 - Virtual properties
 - Plugins
 
+## what is collections in the MongoDB?
+- Collections is the set of documents.
+- In simple terms collection is our table name, and data which was stored in this named as documents.
+
 ## What is CORS and why did you use it?
 
 - CORS (Cross-Origin Resource Sharing) is a security mechanism that allows controlled access to resources from different origins.
@@ -153,6 +157,21 @@ app.use(cors({
 - Browser sends preflight OPTIONS request
 - Server responds with allowed origins/methods
 - Browser allows/blocks actual request
+
+# NodeJs:
+
+## What are streams in Nodejs?
+- A stream is a sequence of the data that is being moved from one point to another point over time.
+- In streams the data is arrived in the chunks and we can watch the chunks and the rest of the data arrives over time.
+- It prevents unnecessary downloads and memory usage.
+- Ex: Watching a youtube video. here data arrives in the chunks not fully download the video.
+
+## Buffers:
+- Nodejs cannot control at which data arrives in the stream.
+- It can only decide when is the right time to send the data for processing.
+- If there is data already processed or too little data to process, Node puts the arriving data in the buffer.
+- It is an intentionally small area that node maintains in the runtime to process a stream of data.
+
 
 # Behavioral Questions
 
