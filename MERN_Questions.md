@@ -81,6 +81,42 @@ Benefits:
 - Optimize Renders: Use PureComponent, or React.memo to prevent unnecessary renders.
 - Server-Side Rendering (SSR): Optimize initial load times by rendering components on the server side.
 
+## Context API vs Redux - Key Differences:
+
+- Context API is React's built-in solution for passing data through the component tree without prop drilling. Redux is a standalone state management library with a more opinionated architecture.
+
+**Architecture:**
+
+- Context API: Lightweight, built into React. Provider/Consumer pattern. No boilerplate required.
+- Redux: Separate library with strict unidirectional data flow: actions → reducers → store → components. More boilerplate (actions, action creators, reducers, middleware).
+
+**Performance:**
+
+- Context API: All consumers re-render when context value changes, even if they only use part of it. Can cause unnecessary re-renders in large apps.
+- Redux: Fine-grained subscriptions. Components only re-render when their specific selected state changes. Better optimization for complex apps.
+
+**Developer Experience:**
+
+- Context API: Simple to set up, minimal learning curve. Great for small to medium state needs.
+- Redux: Steeper learning curve but provides powerful debugging (Redux DevTools with time-travel), middleware ecosystem (thunks, sagas), and predictable patterns.
+
+**When to use Context API:**
+
+1. Theming, locale/language preferences
+2. User authentication state
+3. Small to medium apps with simple state needs
+4. Avoiding prop drilling for relatively static data
+5. You want to minimize dependencies
+
+**When to use Redux:**
+
+1. Large applications with complex state interactions
+2. Need for robust debugging and time-travel
+3. Multiple components updating the same state frequently
+4. Async operations requiring middleware (API calls)
+5. Team needs consistent, predictable patterns
+6. Performance optimization is critical
+
 ## What is the most challenging task you handled in your project?
 - 
 ---
