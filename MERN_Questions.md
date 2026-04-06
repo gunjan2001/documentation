@@ -127,3 +127,33 @@ Why we need it:
 - Virtual properties
 - Plugins
 
+## What is CORS and why did you use it?
+
+- CORS (Cross-Origin Resource Sharing) is a security mechanism that allows controlled access to resources from different origins.
+
+The Problem:
+- By default, browsers block requests from one origin (domain/port) to another. My setup:
+
+- Frontend: http://localhost:3000
+- Backend: http://localhost:5000 Without CORS, the browser blocks API calls.
+
+Solution:
+```
+app.use(cors());
+
+In production, I would restrict it:
+app.use(cors({
+  origin: 'https://myapp.com',
+  credentials: true
+}));
+```
+
+**How it works:**
+
+- Browser sends preflight OPTIONS request
+- Server responds with allowed origins/methods
+- Browser allows/blocks actual request
+
+# Behavioral Questions
+
+## How do you handle tight deadlines?
