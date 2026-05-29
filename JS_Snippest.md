@@ -30,6 +30,9 @@ const abc = () => {
   console.log(x); // 10
 }
 abc();
+
+console.log(x) // undefine
+var x = 10;
 ```
 
 **`binary (+) & unary (+)`**
@@ -38,19 +41,10 @@ abc();
 - unary plus : Numeric conversion -> `if we apply + before any value it will convert that value to number not apply numbers`
 
 ```
-// No effect on numbers
-let x = 1;
-alert( +x ); // 1
-
-let y = -2;
-alert( +y ); // -2
-
 // Converts non-numbers
 alert( +true ); // 1
 alert( +"" );   // 0
 ```
-
-**Must visit this : https://javascript.info/operators**
 
 ### calculation with plus
 
@@ -77,10 +71,6 @@ alert( null == undefined ); // true
 **The value undefined shouldn’t be compared to other values so it will gives false**
 
 ### **`The values null and undefined equal == each other and do not equal any other value.`**
-
-```
-alert( alert(1) && alert(2) ); // alert 1 and then undefined
-```
 
 ## Objects
 
@@ -152,6 +142,22 @@ arr[2]();
 
 <hr/>
 <hr/>
+
+```
+const obj = {
+  a: 1,
+  b: 2,
+  sum() {
+    return this.a + this.b;
+  }
+};
+
+const res = obj.sum; 
+console.log(res()) // NaN: because this.a give undefine and undefine + undefine is NaN.
+
+SOLUTION to get 3:
+const res = obj.sum.bind(obj); 
+```
 
 ## Questions:
 
