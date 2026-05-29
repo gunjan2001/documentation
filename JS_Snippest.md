@@ -1,3 +1,17 @@
+# var and let example
+
+```
+for (var i = 0 i < 3 i++) {
+	setTimeout(() => console.log(i), 1000);
+}
+// 3 3 3
+
+for (let i = 0 i < 3 i++) {
+	setTimeout(() => console.log(i), 1000);
+}
+// 0 1 2
+```
+
 # Hoisting code snippest:
 
 ```
@@ -811,6 +825,25 @@ console.log(spookyItems);
 ```
 let flatArr = [1, [2, 3, [9, [10]], [4, 5, [6, 7]]]];
 
+
+Method 1:
+
+function flatArr(arr){
+	const flattenArr = [];
+
+	for(let val of arr){
+	    if (Array.isArray(val)) {
+	      acc.push(...flattenArray(val));
+	    } else {
+	      acc.push(val);
+	    }
+	}
+
+	return flattenArr;
+}
+
+
+Method 2:
 function flattenArray(arr) {
   return arr.reduce((acc, curr) => {
     if (Array.isArray(curr)) {
