@@ -833,9 +833,9 @@ function flatArr(arr){
 
 	for(let val of arr){
 	    if (Array.isArray(val)) {
-	      acc.push(...flattenArray(val));
+	      flattenArr.push(...flatArr(val));
 	    } else {
-	      acc.push(val);
+	      flattenArr.push(val);
 	    }
 	}
 
