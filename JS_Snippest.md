@@ -1,18 +1,36 @@
-# Points to remember for JS:
+# Hoisting code snippest:
 
-**For || operator:**
+```
+const abc = () => {
+  var x = 10;
+  if(true){
+    var x = 20;
+    console.log(x); // 20
+  }
+  console.log(x); // 20
+}
 
-- truthy value || truthy value = first truthy value.
-- truthy value || falsy value = truthy value.
-- falsy value || truthy value = truthy value.
-- falsy value || falsy value = second falsy value.
 
-**For && operator:**
+const abc = () => {
+  let x = 10;
+  if(true){
+    let x = 20;
+    console.log(x); // 20
+  }
+  console.log(x); // 10
+}
+abc();
 
-- truthy value && truthy value = second truthy value.
-- truthy value && falsy value = falsy value.
-- falsy value && truthy value = falsy value.
-- falsy value && falsy value = first falsy value.
+const abc = () => {
+  const x = 10;
+  if(true){
+    const x = 20;
+    console.log(x); // 20
+  }
+  console.log(x); // 10
+}
+abc();
+```
 
 **`binary (+) & unary (+)`**
 
@@ -102,34 +120,6 @@ alert( user.ref().name ); // John
 
 - **Static methods are designed to live only on the constructor in which they are created, and cannot be passed down to any children or called upon class instances.**
 
-**ES6 Function**
-
-- How function is called as a tagged template literal?
-- with the use of the backtick (`) character instead of quotation marks.
-- Ex:
-
-```
-function getPersonInfo(one, two, three) {
-  console.log(one);
-  console.log(two);
-  console.log(three);
-}
-
-const person = 'Lydia';
-const age = 21;
-
-getPersonInfo`${person} is ${age} years old`;
-
-```
-
-- `Here The template literal ${person} is ${age} years old is passed as an argument to the function.`
-- When a function is called as a tagged template literal, the template literal is processed as an argument along with any interpolated values (${person} and ${age} in this case). The template literal is divided into multiple parts, separated by the interpolated values. These parts are passed to the function as separate arguments, followed by the interpolated values.
-
-```
-['', ' is ', ' years old']
-Lydia
-21
-```
 
 ## primitives:
 
@@ -159,88 +149,6 @@ arr[2]();
 ```
 
 - here this will refer to that array object so it prints all values of array.
-
-## Map & Set
-
-- We’d like to get an array of map.keys() in a variable and then apply array-specific methods to it, e.g. .push.
-  But that doesn’t work:
-
-```
-let map = new Map();
-
-map.set("name", "John");
-
-let keys = map.keys();
-
-// Error: keys.push is not a function
-keys.push("more");
-```
-
-- Why? How can we fix the code to make keys.push work?
-- That’s because map.keys() returns an iterable, but not an array.
-- we fix this by applying this method
-
-```
-let keys = Array.from(map.keys());
-Or
-let keys = [...map.keys(), 'more'];
-console.log(keys); // ["name", "more"];
-```
-
-## new Function method for creating function:
-
-- function syntax:
-
-```
-let func = new Function ([arg1, arg2, ...argN], functionBody);
-```
-
-- Usually, a function remembers where it was born in the special property `[[Environment]]`. It references the Lexical Environment from where it’s created
-- **But when a function is created using new Function, its `[[Environment]]` is set to reference not the current Lexical Environment, but the global one.**
-- So, such function doesn’t have access to outer variables, only to the global ones.
-
-Example:
-
-```
-function getFunc() {
-  let value = "test";
-  let func = new Function('alert(value)');
-  return func;
-}
-getFunc()(); // error: value is not defined
-
-But if we declare variable globally using var/let/const then it will take that value.
-
-let value = "Gunjan"
-getFunc()(); // will give "Gunjan"
-
-```
-
-## Modules:
-
-- An imported module is read-only: you cannot modify the imported module. Only the module that exports them can change its value.
-- When we try to increment the value of myCounter, it throws an error: myCounter is read-only and cannot be modified.
-- With the import keyword, all imported modules are pre-parsed. This means that the imported modules get run first, the code in the file which imports the module gets executed after.
-
-## delete keyword:
-
-- The delete operator returns a boolean value: true on a successful deletion, else it'll return false. However, variables declared with the var, const or let keyword cannot be deleted using the delete operator.
-
-## padStart():
-
-- With the padStart method, we can add padding to the beginning of a string. The value passed to this method is the total length of the string together with the padding. The string "Lydia Hallie" has a length of 12. name.padStart(13) inserts 1 space at the start of the string, because 12 + 1 is 13.
-
-- If the argument passed to the padStart method is smaller than the length of the array, no padding will be added.
-
-## row() method:
-
-- String.raw returns a string where the escapes (\n, \v, \t etc.) are ignored!
-
-## Order of execution of promise with async await:
-
-- first all synchronous code run
-- then if any function is async and it is call then it will run first and where await is comming it is go outside of the function and then run sync code if any remaining other wise it will run promise if there.
--
 
 <hr/>
 <hr/>
