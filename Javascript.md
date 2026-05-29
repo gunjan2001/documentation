@@ -981,24 +981,6 @@ user = null;
 - Methods allow objects to “act” like object.doSomething().
 - Methods can reference the object as this.
 
-## Object Comparison by reference:
-
-let a = {};
-let b = a; // copy the reference
-
-alert( a == b ); // true, both variables reference the same object
-alert( a === b ); // true
-
-### Accessing the object values:
-
-![image](/images/accessingobjectvalues.png)
-
-<hr/>
-
-- if we want to make key and value_variable as same name so we can define by this:
-
-![image](/images/keyvalsame.png)
-
 ### Object destructring:
 
 - For finding remaining element of the object we use `...rest` keyword in our destructure object.
