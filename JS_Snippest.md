@@ -404,66 +404,6 @@ NaN
 
 <hr/>
 
-**The following recursive code will cause a stack overflow if the array list is too large. How can you fix this and still retain the recursive pattern?**
-
-```
-var list = readHugeList();
-
-var nextListItem = function() {
-    var item = list.pop();
-
-    if (item) {
-        // process the list item...
-        nextListItem();
-    }
-};
-```
-
-**Output:**
-
-```
-var list = readHugeList();
-
-var nextListItem = function() {
-    var item = list.pop();
-
-    if (item) {
-        // process the list item...
-        setTimeout( nextListItem, 0);
-    }
-};
-```
-
-- The stack overflow is eliminated because the event loop handles the recursion, not the call stack.
-- When nextListItem runs, if item is not null, the timeout function (nextListItem) is pushed to the event queue and the function exits, thereby leaving the call stack clear.
-- When the event queue runs its timed-out event, the next item is processed and a timer is set to again invoke nextListItem.
-- Accordingly, the method is processed from start to finish without a direct recursive call, so the call stack remains clear, regardless of the number of iterations.
-
-<hr/>
-
-```
-0 || 1 = 1
-1 || 2 = 1
-0 && 1 = 0
-1 && 2 = 2
-```
-
-**For || operator:**
-
-- truthy value || truthy value = first truthy value.
-- truthy value || falsy value = truthy value.
-- falsy value || truthy value = truthy value.
-- falsy value || falsy value = second falsy value.
-
-**For && operator:**
-
-- truthy value && truthy value = second truthy value.
-- truthy value && falsy value = falsy value.
-- falsy value && truthy value = falsy value.
-- falsy value && falsy value = first falsy value.
-
-<hr/>
-
 ```
 console.log(false == '0')
 console.log(false === '0')
@@ -500,35 +440,6 @@ console.log(a[b]);
 - In the code snippet, b and c are separate objects with different memory references, even though they have the same key value ('b' and 'c' respectively). When you use a[b] and a[c] as property keys, both b and c are implicitly converted to the same string representation, which is "[object Object]". As a result, a[b] and a[c] are treated as the same property.
 
 - When you assign 123 to a[b] and then 456 to a[c], the value 456 overrides the previous value 123. So, when you log a[b] to the console, it retrieves the most recent value assigned to the property with the key "[object Object]", which is 456.
-
-<hr/>
-
-```
-var hero = {
-    _name: 'John Doe',
-    getSecretIdentity: function (){
-        return this._name;
-    }
-};
-
-var stoleSecretIdentity = hero.getSecretIdentity;
-
-console.log(stoleSecretIdentity());
-console.log(hero.getSecretIdentity());
-```
-
-**Output:**
-
-```
-undefined // because after assigning the function to stoleSecretIdentity now after calling this the `this` of `stoleSecretIdentity` will reference to global _name which is undefined.
-"John Doe"
-```
-
-And if we want to access the \_name so we have to use bind keyword and we can access it see below:
-
-```
-var stoleSecretIdentity = hero.getSecretIdentity.bind(hero);
-```
 
 <hr/>
 
