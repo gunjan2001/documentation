@@ -185,6 +185,14 @@ vh: Relative to 1% of the height of the viewport*
 
 - The !important rule in CSS is used to add more importance to a property/value than normal.
 
+## CSS transitions:
+
+- https://www.youtube.com/watch?v=xdap5e3-DwM
+
+## CSS Keyframes:
+
+- https://www.youtube.com/watch?v=9gbFljxZXDE
+
 ## CSS Variables:
 
 - The var() function is used to insert the value of a CSS variable.
