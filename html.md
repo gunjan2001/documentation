@@ -47,6 +47,7 @@ Marquee is used for scrolling text on a web page. It scrolls the image or text u
 
 # What is difference between opacity 0 vs visibility hidden?
 
+<img width="848" height="611" alt="image" src="https://github.com/user-attachments/assets/b8654093-a69a-476f-8212-0f1c76c65189" />
 
 
 ## When to use scripts in the head and when to use scripts in the body?
