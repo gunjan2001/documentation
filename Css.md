@@ -38,15 +38,6 @@ The cascade algorithm is split into 4 distinct stages.
 
 - horizontally center the element within its container.
 
-### inherit Value:
-
-- current element be inherited the margin property from the parent element.
-
-### Margin Collapse:
-
-- Top and bottom margins of elements are sometimes collapsed into a single margin that is equal to the largest of the two margins.
-- This does not happen on left and right margins! Only top and bottom margins!
-
 ## CSS padding:
 
 - Padding is used to create space around an element's content, inside of any defined borders.
@@ -57,7 +48,8 @@ The cascade algorithm is split into 4 distinct stages.
 
 ## CSS Height, Width and Max-width:
 
-- The CSS height and width properties are used to set the `height` and `width` of an `element`. The CSS `max-width` property is used to set the maximum width of an element.
+- The CSS height and width properties are used to set the `height` and `width` of an `element`.
+- The CSS `max-width` property is used to set the maximum width of an element.
 
 ### height and width Values:
 
@@ -83,7 +75,8 @@ The cascade algorithm is split into 4 distinct stages.
 
 ## Content Box:
 
-- In the content box model, the width and height of an element are calculated based on the content's dimensions alone, excluding padding, border, and margin. In other words, the content box represents the innermost dimensions of an element that holds its actual content.
+- In the content box model, the width and height of an element are calculated excluding padding, border, and margin.
+- In other words, the content box represents the innermost dimensions of an element that holds its actual content.
 
 - Width = content width
 - Height = content height
@@ -91,14 +84,6 @@ The cascade algorithm is split into 4 distinct stages.
 ### Text Decoration:
 
 - All links in HTML are underlined by default. Sometimes you see that links are styled with no underline. The `text-decoration: none;` is used to remove the underline from links, like this.
-
-## What are Web Safe Fonts?
-
-- Web safe fonts are fonts that are universally installed across all browsers and devices.
-
-## Max-width:
-
-- only width will add scrollbar when the screen is getting small after that width where max width will sync with screen.
 
 ## css display:
 
@@ -110,16 +95,17 @@ The cascade algorithm is split into 4 distinct stages.
 
 - properties:
 
-static: Default value. Here the element is positioned according to the normal flow of the document.
-absolute: Here the element is positioned relative to its parent element. The final position is determined by the values of left, right, top, bottom.
-fixed: This is similar to absolute except here the elements are positioned relative to the <html> element.
-relative: Here the element is positioned according to the normal flow of the document and positioned relative to its original/ normal position.
-initial: This resets the property to its default value.
-inherit: Here the element inherits or takes the property of its parent.
+- **static**: Default value. Here the element is positioned according to the normal flow of the document.
+- **absolute**: Here the element is positioned relative to its parent element. The final position is determined by the values of left, right, top, bottom.
+- **fixed**: This is similar to absolute except here the elements are positioned relative to the <html> element.
+- **relative**: Here the element is positioned according to the normal flow of the document and positioned relative to its original/ normal position.
+- **initial**: This resets the property to its default value.
+- **inherit**: Here the element inherits or takes the property of its parent.
 
 ## fixed vs sticky:
 
-- **the 'fixed' position sets the position of the HTML elements according to the viewport, and the 'sticky' position sets the position according to the parent element**
+- **the 'fixed' position sets the position of the HTML elements according to the viewport, and**
+- **the 'sticky' position sets the position according to the parent element**
 - fixed: It always overrides the other elements.
 - sticky: It overrides the other elements when the element reaches the offset and becomes fixed.
 
