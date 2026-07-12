@@ -57,6 +57,11 @@ Marquee is used for scrolling text on a web page. It scrolls the image or text u
 
 <img width="848" height="611" alt="image" src="https://github.com/user-attachments/assets/b8654093-a69a-476f-8212-0f1c76c65189" />
 
+# What is the difference between readonly and disabled inputs (behavior + form submission)?
+
+- Both readonly and disabled prevent a user from editing an input's value, but they behave quite differently beyond that.
+- A readonly input is still focusable, can be tabbed to, and most importantly its value is included when the form is submitted.
+- A disabled input is completely inert as it cannot be focused, cannot be interacted with in any way, and its value is entirely excluded from form submission.
 
 ## When to use scripts in the head and when to use scripts in the body?
 
@@ -281,6 +286,9 @@ OR
 
 
 ```
+
+- Local Storage - This helps in storing data that will be retained even though the user reopens the browser. It is stored for each webapp on different browsers.
+- Session Storage - This is used for one session only. After the user closes the browser this gets deleted.
 
 ## List:
 
