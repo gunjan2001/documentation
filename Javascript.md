@@ -193,74 +193,22 @@ if a isn’t defined, then b.
   - Functions
   - true itself
 
-## Ternary statement `? :` :
-
 ## Switch statement:
 
 - In switch, the cases will use the `===` for comparision not `==`.
 - Switch cases use strict comparison (===).
 
-## Numbers:
-
-- Numbers come in the blue colour and string in black colour.
-
-## JavaScript Integer Accuracy:
-
-- JavaScript integers are only accurate up to 15 digits.
-
-## BigInt:
-
-- To create a BigInt, append n to the end of an integer or call BigInt()
-- `let y = BigInt(1234567890123456789012345)`
-- `let y = 9999999999999999n;`
-- `The JavaScript typeof a BigInt is "bigint".`
-- let x = 5n;
-- let y = x / 2;
-- // Error: Cannot mix BigInt and other types, use explicit conversion.
-- let x = 5n;
-- let y = Number(x) / 2;
-
-## isNaN() function:
-
-- NaN property represents the “Not-a-Number” value. It indicates a value that is not a legal number.
-- typeof of NaN will return a Number.
-
-- isNaN() to find out if a value is a not a number.
-- `NaN is a number: typeof NaN returns number`.
-- `Infinity is a number: typeof Infinity returns number.`
-- isNaN("2") => false
-- isNaN("a") => true
-- isNaN(a) => error
-
-- But do we need this function? Can’t we just use the comparison === NaN? Unfortunately not.
-- The value NaN is unique in that it does not equal anything, including itself:
+## typeof of NaN will return a Number.
 
 ```
 alert( NaN === NaN ); // false
 ```
-
-## Number Methods:
-
-![image](/images/numbermethods.png)
 
 ## toFixed() method :
 
 - used for round off the float value.
 - `99.5210.toFixed()` : gives 100
 - `99.5210.toFixed(2)` : gives 99.52
-
-## Comparision:
-
-- `==`, `===`, and `object.is(value1, value2)`.
-- `==` : if the right side is string then it will convert the left side value into to string and then compare. and if the right side value is numeric then it will apply valueOf method on the left side value and then compare
-- There is a special built-in method Object.is that compares values like ===, but is more reliable for two edge cases:
-- It works with NaN: Object.is(NaN, NaN) === true, that’s a good thing.
-- Values 0 and -0 are different: Object.is(0, -0) === false, technically that’s correct, because internally the number has a sign bit that may be different even if all other bits are zeroes.
-
-## Comparing strings
-
-- As we know from the chapter Comparisons, strings are compared character-by-character in alphabetical order.
-- A lowercase letter is always greater than the uppercase:  
 
 ## Number Methods:
 
@@ -277,15 +225,9 @@ alert( NaN === NaN ); // false
 - ways: ` `` `(backticks) , " " , ' '.
 
 - Template Literals use back-ticks (``) rather than the quotes ("") to define a string:
-- The \ method is not the preferred method. It might not have universal support.
-- Some browsers do not allow spaces behind the \ character.
 - strings are immutable cannot be changed.
 
   ![image](/images/strings.png)
-
-## String with const:
-
-![image](/images/immutablestrings.png)
 
 ## String Methods:
 
