@@ -41,26 +41,6 @@ const Hello = () =>{
 - `class` to `className`
 - Also supports the camelcase name in property.
 
-**Notes:**
-
-- In jsx if we want to write javascript so we can use `{ }` and write any javascript in that brackets.
-
-- Example:
-
-```
-function App(){
-  const title = "fdjkaskd"
-
-  return (
-    <div>
-      <h1> {title.toUpperCase()} </h1>
-      {6 + 7 + 7}
-    </div>
-  )
-}
-
-```
-
 ## **1. Virtual DOM:**
 - Virtual DOM is the virtual representation of Real DOM
 - React update the state changes in Virtual DOM first and then it syncs with Real DOM
@@ -78,11 +58,6 @@ function App(){
 1. If you need a React functionality whose Function component equivalent is not present yet, like Error Boundaries.
 2. In older versions, If the component needs state or lifecycle methods then you need to use class component.
 
-## Conditionals in JSX:
-
-- for any particular conditions in our component we use ternary operator in our return block.
-- and we write conditions in `{ condition ? (execute if true) : (execute if false) }` and if we dont want else part we can use `&&` => `{ condition && (execute if true) }` Here `&&` called short circuit opeartor.
-
 ## Fragments:
 
 - `<> write your jsx here </>`
@@ -97,6 +72,22 @@ function App(){
 
 - The code readability of React Fragment is higher
 - Because React fragments have a smaller DOM, they render faster and use less memory.
+
+# React Strictmode: 
+- StrictMode is a development-only diagnostic wrapper that helps catch bugs early by intentionally exercising edge cases:
+
+### Usage:
+
+- Double-invokes function component bodies, and effects (useEffect/useState initializers) on mount in dev.
+- Warns on deprecated/unsafe lifecycle patterns and legacy APIs
+- **It has zero effect in production builds — the double-invoking behavior only happens in development, so it costs nothing at runtime for real users.**
+
+### What if we remove StrictMode?
+
+- The app would still work identically today, in dev and prod
+- I'd lose the early-warning safety net
+- **For Ex: if I later add a fetch or subscription that isn't cleaned up properly) could silently pass in dev and only surface later as a subtle production bug**
+- I'd also stop getting forward-compatibility warnings for deprecated APIs
 
 # Components:
 
