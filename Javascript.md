@@ -414,14 +414,6 @@ Ans: Mar -> march
 
 ## Functions:
 
-- https://www.w3schools.com/js/js_function_definition.asp
-
-- Topics:
-  - The Function() Constructor
-  - Function Hoisting
-  - Self-Invoking Functions
-  - Function Expressions
-
 ### Functions are Objects
 
 - The typeof operator in JavaScript returns "function" for functions.
@@ -429,23 +421,16 @@ Ans: Mar -> march
 
 ### Arrow Functions
 
-Arrow functions allows a short syntax for writing function expressions.
-
-Arrow functions have no “this”
-
-You don't need the function keyword, the return keyword, and the curly brackets.
-
-You can only omit the return keyword and the curly brackets if the function is a single statement.
-
-Arrow functions are special: they don’t have their “own” this. If we reference this from such a function, it’s taken from the outer “normal” function. means it will access property from the global object.
-
-Arrow functions are not hoisted. They must be defined before they are used.
-
-Using const is safer than using var, because a function expression is always constant value.
+- Arrow functions allows a short syntax for writing function expressions.
+- Arrow functions have no “this”
+- You don't need the function keyword, the return keyword, and the curly brackets.
+- You can only omit the return keyword and the curly brackets if the function is a single statement.
+- Arrow functions are not hoisted. They must be defined before they are used.
 
 ## Normal Function Vs Arrow Functions:
 
-- First main diff. is `Syntax`. we can write an arrow function in fewer lines. we don't need the function keyword. we can only omit the return keyword and the curly brackets if the function is a single statement.
+- First main diff. is `Syntax`.
+- we can write an arrow function in fewer lines. we don't need the function keyword. we can only omit the return keyword and the curly brackets if the function is a single statement.
 
 - Second Main difference between is `this` keywords. In regular functions `this` value is dynamic means if we have a method in any object then the value of `this` referes to particular object where in arrow function `this` not refers to particular object. show below example carefully.
 
@@ -469,45 +454,40 @@ me.thisInRegular();
 
 ## Function Parameters Vs arguments:
 
-Function parameters are the names listed in the function definition.
-
-Function arguments are the real values passed to (and received by) the function.when we are calling it.
-
-https://www.w3schools.com/js/js_function_parameters.asp
-
-### Rest parameters & The Arguments Object:
-
-The rest parameter `(...)` allows a function to treat an indefinite number of arguments as an array. means if we have to pass argument more than one we can use function myFun(...params(give any name)).
-
-Before this in es 5 uses the argument parameter for accessing all argument as a parameter.
-
-![image](/images/rest.png)
+- Function parameters are the names listed in the function definition.
+- Function arguments are the real values passed to (and received by) the function.when we are calling it.
 
 ## Immediately-Invoked Function Expressions (IIFE):
 
-- An IIFE (Immediately Invoked Function Expression) is a function that runs the moment it is invoked or called in the JavaScript event loop.
+- An Immediately Invoked Function ( known as IIFE and pronounced as IIFY) is a function that runs as soon as it is defined.
 
+Syntax of IIFE :
 ```
- // Regular Function.
-    function Greet() {
-        console.log("Welcome to GFG!");
-    };
-    // Execution of Regular Function.
-    Greet();
-
-    // IIFE creation and execution.
-    (function() {
-        console.log("Welcome to GFG!");
-    })();
+(function(){ 
+  // Do something;
+})();
 ```
 
-- here when we call the second time the counter will reset to 0 and again increase 1 but the function will call 3 times.to avoid this type of error we use clousre in which we use IIFE.
+## Higher Order Functions in javascript.
 
-![image](/images/withoutClousre.png)
+- Functions that operate on other functions, either by taking them as arguments or by returning them, are called higher-order functions.
 
-- with clousre:
+```
+function higherOrder(fn) {
+  fn();
+}
+```
 
-![image](/images/clousoure.png)
+```
+higherOrder(function() { console.log("Hello world") });  
+function higherOrder2() {
+  return function() {
+    return "Do something";
+  }
+}      
+var x = higherOrder2();
+x()   // Returns "Do something"
+```
 
 ## what is function statement?
 
@@ -531,7 +511,7 @@ console.log("b called");
 -- b();
 ```
 
-## Difference between them:
+-** Difference between them**:
 
 - major diff is hoisting. when we called both a(); and b(); before defining a will return `a called` and for b it is showing `error` because the b is var and it is undefine so it is not callable.
 
@@ -580,21 +560,17 @@ Harry
 
 ## `this` keyword:
 
-It is a keyword which reference to a variable of current object.
-
-### Global Object
-
-When a function is called without an owner object, the value of this becomes the global object.
-
-In a web browser the global object is the browser window.
+- It is a keyword which reference to a variable of current object.
 
 ## Call, Apply and Bind Methods:
 
-- JavaScript provides the call(), apply(), and bind() methods for setting the this context within a function. These methods are especially useful when working with object-oriented code or handling different function contexts.
+- JavaScript provides the call(), apply(), and bind() methods for setting the this context within a function.
+- These methods are especially useful when working with object-oriented code or handling different function contexts.
 
  **`call`** :
 
- - The Call() Method calls the function directly and sets this to the first argument passed to the call method and if any other sequences of arguments preceding the first argument are passed to the call method then they are passed as an argument to the function.
+ - The Call() Method calls the function directly and sets this to the first argument passed to the call method and
+ - If any other sequences of arguments preceding the first argument are passed to the call method then they are passed as an argument to the function.
 
 **Syntax:**
 
@@ -621,8 +597,6 @@ PrintName.sayHi.call(nameObj, 42); // Tony age is 42
 ```
 
 `apply` : Same but after writing objectname, if suppose function have extra argument then we can use `[ ]`.
-
-The Apply() Method calls the function directly and sets this to the first argument passed to the apply method and if any other arguments provided as an array are passed to the call method then they are passed as an argument to the function.
 
 Syntax:
 ```
@@ -658,7 +632,8 @@ bind(thisArg, arg1, arg2, /* …, */ argN)
 
 **Example:**
 
-```let nameObj = {
+```
+let nameObj = {
     name: "Tony"
 }
 
@@ -675,12 +650,10 @@ let HiFun = PrintName.sayHi.bind(nameObj);
 HiFun(); // Tony
 ```
 
-![image](/images/callapply.png)
-
 ## Function Currying:
 
-- Currying is used in JavaScript to break down complex function calls into smaller, more manageable steps. It transforms a function with multiple arguments into a series of functions, each taking a single argument.
-
+- Currying is used in JavaScript to break down complex function calls into smaller, more manageable steps.
+- It transforms a function with multiple arguments into a series of functions, each taking a single argument.
 - It converts a function with multiple parameters into a sequence of functions.
 - Each function takes a single argument and returns another function until all arguments are received.
 
@@ -709,36 +682,9 @@ const add = a => b => a + b;
 console.log(add(5)(4));
 ```
 
-##### Additional operators:
-
-- To delete a property: delete obj.prop.
-- To check if a property with the given key exists: "key" in obj.
-- To iterate over an object: for (let key in obj) loop.
-
-## Property names limitations
-
-```
-
-let obj = {
-0: "test" // same as "0": "test"
-};
-
-// both alerts access the same property (the number 0 is converted to string "0")
-alert( obj["0"] ); // test
-alert( obj[0] ); // test (same property)
-
-```
-
-- A notable feature of objects in JavaScript, compared to many other languages, is that it’s possible to access any property. There will be no error if the property doesn’t exist!
-- Reading a non-existing property just returns undefined. So we can easily test whether the property exists:
-
 ## The "for..in" loop
 
 - To walk over all keys of an object, there exists a special form of the loop: for..in
-
-## Are objects ordered? In other words, if we loop over an object, do we get all properties in the same order they were added? Can we rely on this?
-
-- The short answer is: “ordered in a special fashion”: integer properties are sorted, others appear in creation order.
 
 ## Property flags
 
@@ -748,29 +694,31 @@ alert( obj[0] ); // test (same property)
 - `enumerable` – if true, then listed in loops, otherwise not listed.
 - `configurable` – if true, the property can be deleted and these attributes can be modified, otherwise not.
 
-`Object.preventExtensions(obj)`
+**`Object.preventExtensions(obj)`**
 
 - Forbids the addition of new properties to the object.
 
-`Object.seal(obj)`
+**`Object.seal(obj)`**
 
 - Forbids adding/removing of properties. but allow for changing. Sets configurable: false for all existing properties.
 
-`Object.freeze(obj)`
+**`Object.freeze(obj)`**
 
 - Forbids adding/removing/changing of properties. Sets configurable: false, writable: false for all existing properties.
 
-`Object.isExtensible(obj)`
+**`Object.isExtensible(obj)`**
 
 - Returns false if adding properties is forbidden, otherwise true.
 
-`Object.isSealed(obj)`
+**`Object.isSealed(obj)`**
 
 - Returns true if adding/removing properties is forbidden, and all existing properties have configurable: false.
 
 ## Frozen Object: `IMP`
 
-- You can make immutable object using the function `Object.freeze(obj)`. The object passed to the freeze method will become immutable. so we cannot overwrite the value to it's parameter.
+- You can make immutable object using the function `Object.freeze(obj)`.
+- The object passed to the freeze method will become immutable.
+- so we cannot overwrite the value to it's parameter.
 
 ```
 
@@ -790,27 +738,6 @@ obj2.b = "test21"
 - There’s a background process in the JavaScript engine that is called garbage collector.
 - It monitors all objects and removes those that have become unreachable.
 
-**Example:**
-
-```
-
-// user has a reference to the object
-let user = {
-name: "John"
-};
-
-```
-
-- If the value of user is overwritten, the reference is lost:
-
-```
-
-user = null;
-
-```
-
-- Now John becomes unreachable. There’s no way to access it, no references to it. Garbage collector will junk the data and free the memory.```
-
 - **The basic garbage collection algorithm is called “mark-and-sweep”.**
 - **the garbage collector tries to run only while the CPU is idle, to reduce the possible effect on the execution.**
 - **Garbage collection is performed automatically. We cannot force or prevent it.**
@@ -822,8 +749,6 @@ user = null;
 ### Object destructring:
 
 - For finding remaining element of the object we use `...rest` keyword in our destructure object.
-
-![image](/images/destructimhg.png)
 
 ## Object.keys, values, entries:
 
@@ -847,10 +772,10 @@ const a = {
   }
 }
 
-const b = Object.assign({},a); // copy one level means if we change first level it will not copy
-const b = {...a} // copy one level means if we change first level it will not copy
-const b = JSON.parse(JSON.stringify(a)) // copy deeply and it will not
-const b = structuredClone(a); // copy deeply and it will not
+const b = Object.assign({},a); // copy one level means if we change first level it will not change original
+const b = {...a} // copy one level means if we change first level it will not change original
+const b = JSON.parse(JSON.stringify(a)) // copy deeply and it will not change original
+const b = structuredClone(a); // copy deeply and it will not change original
 
 b.name = "dasj"
 b.tech.front = "html"
@@ -859,12 +784,6 @@ console.log("b",b)
 console.log("a",a)
 
 ```
-
-### Property and Value Existence Checking:
-
-- we check whether the values are stay in object or not by using below:
-
-![image](/images/checking.png)
 
 ## Converting objects into array:
 
@@ -902,10 +821,6 @@ console.log(alltoppings1);
 
 ```
 
-## new Array()
-
-- it will take the length of array as argument so we want to create array with no elements and specific length then we can use this.
-
 ### Arrays methods:
 
 1. sort:
@@ -926,52 +841,7 @@ then arr.sort(comapre).
 
 ```
 
-# DOM Manipulation:
-
-## Adding elements using js:
-
-1. .append() method.
-
-- const body = document.body
-- body.append("Hi");
-
-2. creating html elements.
-
-- const div = document.createElement("div");
-- body.append(div);
-- div.innerText = "hello";
-
-## html Methods:'
-
-1. innerHTML:
-
-- `div.innerHTML = "<b>Welcome</b>";`
-
-2. remove html element:
-
-- const bold = document.querySelector("b");
-- bold.remove();
-
-3. getattribute and setAttribute:
-
-- console.log(bold1.getAttribute("title"));
-- console.log(bold1.setAttribute("title", "Italic text"));
-- console.log(bold1.title);
-
-4. class:
-
-- `bold1.classList.add("b3");` // add class to existing element
-- `bold1.classList.remove("b1");` // remove class to existing element
-- `bold1.classList.toggle("b2");` // remove class if that name exists otherwise add it
-- `bold1.classList.toggle("b3", true);` // it will add class and if false it will remove it
-
-7. customize css property:
-
-- bold1.style.backgroundColour = "value";
-
-8. queryselectorAll():
-
-- If you want to find all HTML elements that match a specified CSS selector (id, class names, types, attributes, values of attributes, etc), use the querySelectorAll() method.
+querySelectorAll() method.
 - This example returns a list of all `<p>` elements with class="intro".
 
 - Example:
@@ -1065,50 +935,17 @@ var a = 100;
 
 - function along with it's lexical scope forms a closures.
 - A closure is a function that retains access to its outer function's variables, even after the outer function has finished executing.
-- It "remembers" the environment in which it was created, allowing it to access variables outside its immediate scope.
-
-```
-function outer() {
-    let outerVar = "I'm in the outer scope!";
-    function inner() {
-        console.log(outerVar); 
-        outerVar = "Updated"
-    }
-    return inner;  
-}
-const closure = outer(); 
-closure(); //
-closure();
-
-- I'm in the outer scope!
-- Updated
-```
-
-- The function inner() forms a closure by retaining access to outerVar, which is a variable in the scope of outer().
-- Even though outer() has completed execution, inner() still has access to outerVar due to the closure.
-
 
 ## What are Callbacks in JavaScript?
-In JavaScript, callbacks are functions that are passed as arguments from one function to another and are executed after the completion of a certain task. They are commonly used in asynchronous operations, such as reading files, making HTTP requests, or handling user input.
+
+- In JavaScript, callbacks are functions that are passed as arguments from one function to another and are executed after the completion of a certain task. 
+- They are commonly used in asynchronous operations, such as reading files, making HTTP requests, or handling user input.
 
 - A function can accept another function as a parameter.
 - Callbacks allow one function to call another at a later time.
 - A callback function can execute after another function has finished.
 
 - Ex: settimeout, setinterval
-
-```
-function greet(name, callback) {
-    console.log(`Hello, ${name}!`);
-    callback();  // calling the callback function
-}
-
-function afterGreet() {
-    console.log('Greeting is complete!');
-}
-
-greet('Anjali', afterGreet);
-```
 
 ## Callback Hell (Pyramid of Doom)
 
@@ -1117,20 +954,9 @@ greet('Anjali', afterGreet);
 
 ## Solution to Callback Hell
 
-- Promises
+- **Promises**
 - Promises can help in avoiding the callback hell by providing the structured way to handle the asynchronous operations using the .then() method.
 - Due to which the code becomes more readable by avoiding the deeply neseted callbacks.
-
-## Export:
-
-- There are two types of exports: Named Exports and Default Exports.
-
-**Named export** :
-export class User {...} export default class User {...}
-**Default export**
-import {User} from ... import User from ...
-
-- **Please note that import/export statements don’t work if inside {...}**
 
 # Asynchronous Javascript:
 
@@ -1169,8 +995,6 @@ clearInterval(myInterval);
 
 ```
 
-- **Nested setTimeout allows to set the delay between the executions more precisely than setInterval.**
-
 ## Inversion of control:
 
 - means we are giving our function's control in some other api so it will be risky if API has not calling our function or it call our function many time so this are issues are occur when we use callbacks in our async js.1
@@ -1207,18 +1031,6 @@ let promise = new Promise(function(resolve, reject) {
 - An “unhandled rejection” occurs when a promise error is not handled at the end of the microtask queue.
 
 </hr>
-
-## 1. Consuming Promises:
-
-- A promise is an object representing eventual completion or failer of asynchronous operation.
-
-```
-const promise = createOrder(cart);
-```
-
-- when the Js engine execute this line initially promise contain the empty object and then that api is going to running state. till then js engine will execute the rest of the code.
-- when the api gets executed then it will add data to object.
-- now promise object contain two property:
 
 ### 1. promise state:
 
@@ -1337,36 +1149,18 @@ The syntax is:
 let promise = Promise.any(iterable)
 ```
 
+## Export:
+
+- There are two types of exports: Named Exports and Default Exports.
+
+**Named export** :
+export class User {...} export default class User {...}
+**Default export**
+import {User} from ... import User from ...
+
+- **Please note that import/export statements don’t work if inside {...}**
+
 ## Event listeners:
-
-## Event Capturing / Trickling:
-
-- Trickling down.
-
-```
-
-const childS = document.querySelector(".child");
-childS.addEventListener("click", (e) => {
-alert("child");
-},useCapture);
-
-```
-
-- Here useCapture takes boolean true/false value like you want to bubble or capture if capture then make it true. false is by default.
-
-```
-
-const childS = document.querySelector(".child");
-childS.addEventListener("click", (e) => {
-alert("child");
-});
-
-const parent = document.querySelector(".parent");
-parent.addEventListener("click", (e) => {
-alert("parent");
-},true);
-
-```
 
 ## Stoping the bubbling :
 
@@ -1499,21 +1293,6 @@ alert( JSON.stringify(user) ); // {} (empty object)
 ## Limitations:
 
 - The important limitation: there must be no circular references.
-
-## Higher Order Functions:
-
-- A function which takes a function as argument or return a function is called `higher order function`.
-
-```
-
-function x() {
-console.log("Namaste");
-}
-function y(x) {
-x();
-}
-
-```
 
 ## Functional programming:
 
@@ -1728,61 +1507,6 @@ operationDivide(20,5)
 - `core js` that supports a lot, allows to include only needed features.
 - `polyfill.io` service that provides a script with polyfills, depending on the features and user’s browser.
 
-## Symbol type
-
-- There is a primitive in JavaScript used to create a globally unique reference via the function Symbol():
-
-```
-- const firstName = Symbol("name");
-```
-
-**Symbols in an object literal**
-
-- If we want to use a symbol in an object literal {...}, we need square brackets around it.
-- Like this:
-
-```
-
-let id = Symbol("id");
-
-let user = {
-name: "John",
-[id]: 123 // not "id": 123
-};
-
-```
-
-**Symbols are skipped by for…in**
-
-```
-
-let id = Symbol("id");
-let user = {
-name: "John",
-age: 30,
-[id]: 123
-};
-
-for (let key in user) alert(key);
-
-```
-
-**In contrast, Object.assign copies both string and symbol properties:**
-
-- Symbol is a primitive type for unique identifiers.
-
-- Symbols are created with Symbol() call with an optional description (name).
-
-- Symbols are always different values, even if they have the same name. If we want same-named symbols to be equal, then we should use the global registry: Symbol.for(key) returns (creates if needed) a global symbol with key as the name. Multiple calls of Symbol.for with the same key return exactly the same symbol.
-
-- Symbols have two main use cases:
-
-- **“Hidden” object properties.**
-
-- If we want to add a property into an object that “belongs” to another script or a library, we can create a symbol and use it as a property key. A symbolic property does not appear in for..in, so it won’t be accidentally processed together with other properties. Also it won’t be accessed directly, because another script does not have our symbol. So the property will be protected from accidental use or overwrite.
-
-- So we can “covertly” hide something into objects that we need, but others should not see, using symbolic properties.
-
 ## Map
 
 - Map is a collection of keyed data items, just like an Object. But the main difference is that Map allows keys of any type.
@@ -1818,243 +1542,6 @@ Its main methods are:
 - set.clear() – removes everything from the set.
 - set.size – is the elements count.
 
-```
-
-```
-
-## ProtoType:
-
-```
-let animal = {
-  eats: true
-};
-let rabbit = {
-  jumps: true
-};
-
-rabbit.__proto__ = animal; // sets rabbit.[[Prototype]] = animal
-```
-
-- Now if we read a property from rabbit, and it’s missing, JavaScript will automatically take it from animal.
-
-```
-alert( rabbit.eats ); // true (**)
-alert( rabbit.jumps ); // true
-```
-
-- **we can also assign it as :**
-
-```
-let animal = {
-  eats: true,
-  walk() {
-    alert("Animal walk");
-  }
-};
-
-let rabbit = {
-  jumps: true,
-  __proto__: animal
-};
-
-```
-
-- **Please note that **`__proto__`** is not the same as the internal `[[Prototype]]` property. It’s a getter/setter for `[[Prototype]]`**
-- The **`__proto__`** property is a bit outdated. It exists for historical reasons, modern JavaScript suggests that we should use Object.getPrototypeOf/Object.setPrototypeOf functions instead that get/set the prototype.
-
-```
-let animal = {
-  eats: true
-};
-
-let rabbit = {
-  jumps: true,
-  __proto__: animal
-};
-
-// Object.keys only returns own keys
-alert(Object.keys(rabbit)); // jumps
-
-// for..in loops over both own and inherited keys
-for(let prop in rabbit) alert(prop); // jumps, then eats
-```
-
-- there’s a built-in method obj.hasOwnProperty(key): it returns true if obj has its own (not inherited) property named key.
-
-```
-
-for(let prop in rabbit) {
-  let isOwn = rabbit.hasOwnProperty(prop);
-
-  if (isOwn) {
-    alert(`Our: ${prop}`); // Our: jumps
-  } else {
-    alert(`Inherited: ${prop}`); // Inherited: eats
-  }
-}
-```
-
-**Example:**
-
-```
-We have two hamsters: speedy and lazy inheriting from the general hamster object.
-
-When we feed one of them, the other one is also full. Why? How can we fix it?
-
-let hamster = {
-  stomach: [],
-
-  eat(food) {
-    this.stomach.push(food);
-  }
-};
-
-let speedy = {
-  __proto__: hamster
-};
-
-let lazy = {
-  __proto__: hamster
-};
-
-// This one found the food
-speedy.eat("apple");
-alert( speedy.stomach ); // apple
-
-// This one also has it, why? fix please.
-alert( lazy.stomach ); // apple
-```
-
-**Changed:**
-
-```
-let hamster = {
-  stomach: [],
-  eat(food) {
-    // assign to this.stomach instead of this.stomach.push
-    this.stomach = [food];
-  }
-};
-
-```
-
-<!-- another way -->
-
-```
-let speedy = {
-  __proto__: hamster,
-  stomach: []
-};
-
-let lazy = {
-  __proto__: hamster,
-  stomach: []
-};
-
-```
-
-- We can use constructor property to create a new object using the same constructor as the existing one.
-
-- any object that we have created the JS Engine will add prototype object with it which contains built in methods that we can apply on object. It is also same in the case of array and function.
-
-```
-let obj = {a:"Dsa"}
-obj.__proto__ which is same as Object.prototype
-
-let arr = [];
-arr.__proto__.__proto__ which is same as Object.prototype
-
-
-let arr = [1, 2, 3];
-
-// it inherits from Array.prototype?
-alert( arr.__proto__ === Array.prototype ); // true
-
-// then from Object.prototype?
-alert( arr.__proto__.__proto__ === Object.prototype ); // true
-
-// and null on the top.
-alert( arr.__proto__.__proto__.__proto__ ); // null
-
-
-function f() {}
-
-alert(f.__proto__ == Function.prototype); // true
-alert(f.__proto__.__proto__ == Object.prototype); // true, inherit from objects
-
-```
-
-## Inheritence:
-
-- we have super() method using which we can access the properties of parent class in child class. we can also
-- Classes provide "super" keyword for that.
-- super.method(...) to call a parent method.
-- super(...) to call a parent constructor (inside our constructor only)
-
-- `Overriding constructor`
-
-```
-class Animal {
-
-  constructor(name) {
-    this.name = name;
-  }
-
-}
-
-class Rabbit extends Animal {
-  constructor(name) {
-    this.name = name;
-    this.created = Date.now();
-  }
-}
-
-let rabbit = new Rabbit("White Rabbit"); // Error: this is not defined
-alert(rabbit.name);
-```
-
-- to solve this we have to use super method for call parent constructor and then add extra property or method in that
-
-## Static properties and methods
-
-- We can also assign a method to the class as a whole. Such methods are called static.
-- In a class declaration, they are prepended by static keyword, like this:
-
-```
-class User {
-  static staticMethod() {
-    alert(this === User);
-  }
-}
-
-User.staticMethod(); // true
-```
-
-## Protected & Private properties:
-
-- Protected fields start with `_`. That’s a well-known convention, not enforced at the language level. Programmers should only access a field starting with `_` from its class and classes inheriting from it.
-
-- Private fields start with #. JavaScript makes sure we can only access those from inside the class.
-
-## Class checking: "instanceof"
-
-- The instanceof operator allows to check whether an object belongs to a certain class. It also takes inheritance into account.
-
-## The instanceof operator
-
-- The syntax is:
-  `obj instanceof Class`
-
-- It returns true if obj belongs to the Class or a class inheriting from it.
-
-## Types with object
-
-- For a number, it will be [object Number]
-- For a boolean, it will be [object Boolean]
-- For null: [object Null]
-- For undefined: [object Undefined]
-- For arrays: [object Array]
-
 ## Mixins
 
 - In JavaScript we can only inherit from a single object. There can be only one [[Prototype]] for an object. And a class may extend only one other class.
@@ -2088,49 +1575,6 @@ Object.assign(User.prototype, sayHiMixin);
 
 // now User can say hi
 new User("Dude").sayHi(); // Hello Dude!
-```
-
-## Error object
-
-When an error occurs, JavaScript generates an object containing the details about it. The object is then passed as an argument to catch:
-
-**name**
-Error name. For instance, for an undefined variable that’s "ReferenceError".
-
-**message**
-Textual message about error details.
-There are other non-standard properties available in most environments. One of most widely used and supported is:
-
-**stack**
-Current call stack: a string with information about the sequence of nested calls that led to the error. Used for debugging purposes.
-
-## “Throw” operator
-
-- The throw operator generates an error.
-
-The syntax is:
-
-```
-throw <error object>
-```
-
-- JavaScript has many built-in constructors for standard errors: Error, SyntaxError, ReferenceError, TypeError and others.
-
-```
-let error = new Error(message);
-// or
-let error = new SyntaxError(message);
-let error = new ReferenceError(message);
-```
-
-```
-try {
-   ... try to execute the code ...
-} catch (err) {
-   ... handle errors ...
-} finally {
-   ... execute always ...
-}
 ```
 
 # BOM:
@@ -2283,65 +1727,6 @@ elem.addEventListener(..., true)
 
 - In other words, normally the event goes first down (“capturing”) and then up (“bubbling”). But if event.stopPropagation() is called during the capturing phase, then the event travel stops, no bubbling will occur.
 
-## Event delegation
-
-- Capturing and bubbling allow us to implement one of the most powerful event handling patterns called event delegation.
-- The idea is that if we have a lot of elements handled in a similar way, then instead of assigning a handler to each of them – we put a single handler on their common ancestor.
-- In the handler we get event.target to see where the event actually happened and handle it.
-- The method event.target.closest(selector) returns the nearest ancestor that matches the selector.
-
-- There are other uses for event delegation.
-- Let’s say, we want to make a menu with buttons “Save”, “Load”, “Search” and so on. And there’s an object with methods save, load, search… How to match them?
-- The first idea may be to assign a separate handler to each button. But there’s a more elegant solution. We can add a handler for the whole menu and data-action attributes for buttons that has the method to call:
-- `<button data-action="save">Click to Save</button>`
-- in js we can access this by adding `event.target.dataset.action`
-
-### The “behavior” pattern:
-
-- The pattern has two parts:
-
-- We add a custom attribute to an element that describes its behavior.
-- A document-wide handler tracks events, and if an event happens on an attributed element – performs the action.
-
-## Behavior: Counter
-
-- For instance, here the attribute data-counter adds a behavior: “increase value on click” to buttons:
-- we can access the data attribute using `dataset.here_we_provide_dataattribute name`
-
-## Behavior: Toggler
-
-- One more example of behavior. A click on an element with the attribute data-toggle-id will show/hide the element with the given id
-
-## Benefits of event delegation:
-
-1. improves memory space
-2. mitigates risk of performance bottle neck
-3. Dom manipulation
-4. when elements get added dynamically,the process of adding events is slow
-
-## Limitations:
-
-1. All the events are not bubbled up, some events like blur, focus are not bubbled up
-2. if e.stopPropogation is used in child, then events are not bubbled up
-
-## Event constructor:
-
-```
-let event = new Event(type[, options]);
-```
-
-**Arguments:**
-
-- `type` – event type, a string like "click" or our own like "my-event".
-- `options` – the object with two optional properties:
-  - `bubbles`: true/false – if true, then the event bubbles.
-  - `cancelable`: true/false – if true, then the “default action” may be prevented. Later we’ll see what it means for custom events.
-
-By default both are false: {bubbles: false, cancelable: false}.
-
-## dispatchEvent
-
-- After an event object is created, we should “run” it on an element using the call `elem.dispatchEvent(event)`.
 
 ## event.preventDefault()
 
@@ -2389,29 +1774,6 @@ There are other situations when a third-party script adds something into our doc
 
 MutationObserver allows to implement this.
 
-## Additional methods
-
-There’s a method to stop observing the node:
-
-`observer.disconnect()` – stops the observation.
-When we stop the observing, it might be possible that some changes were not yet processed by the observer. In such cases, we use
-`observer.takeRecords()` – gets a list of unprocessed mutation records – those that happened, but the callback has not handled them.
-
-```
-console.log(1); //1
-
-setTimeout(() => console.log(2)); // callback 1 = 5
-
-Promise.resolve().then(() => console.log(3)); // micro 1 = 3
-
-Promise.resolve().then(() => setTimeout(() => console.log(4))); // micro 2 and when m2 C3  = 6
-
-Promise.resolve().then(() => console.log(5)); // M3 = 4
-
-setTimeout(() => console.log(6)); // C2 = 7
-
-console.log(7); // 2
-```
 
 ## storing data in browser:
 
@@ -2422,7 +1784,7 @@ console.log(7); // 2
 - One of the most widespread use cases is authentication:
 - We can also access cookies from the browser, using document.cookie property.
 - One cookie may not exceed 4KB in size. The number of cookies allowed on a domain is around 20+ (varies by browser).
-- the cookie dies when the browser is closed.
+- **the cookie dies when the browser is closed.**
 
 ### sessionStorage
 
