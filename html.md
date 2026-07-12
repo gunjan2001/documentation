@@ -154,17 +154,6 @@ a-anchor, input, img, label, button, textarea, sub, sup, strong.
 
 ![img](/images/layout.png)
 
-## HTML Responsive Web Design:
-
-- Responsive web design is about creating web pages that look good on all devices! A responsive web design will automatically adjust for different screen sizes and viewports.
-
-### What is Responsive Web Design?
-
-- Responsive Web Design is about using HTML and CSS to automatically resize, hide, shrink, or enlarge, a website, to make it look good on all devices (desktops, tablets, and phones).
-
-- To create a responsive website, add the following `<meta>` tag to all your web pages:
-- Example: `<meta name="viewport" content="width=device-width, initial-scale=1.0">`
-
 ### Using the max-width Property:
 
 - If the `max-width` property is set to 100%, the image will scale down if it has to, but never scale up to be larger than its original size.
@@ -263,17 +252,9 @@ OR
 </textarea>
 ```
 
-### The `<fieldset>` and `<legend>` Elements:
-
-- This is used to provide a border to our form and to place text within that border, displaying the title of the form.
-
 ### The disabled attributes:
 
 - make input field disabled.
-
-### The formaction Attribute:
-
-- The formaction attribute specifies the URL of a file that will process the input when the form is submitted.
 
 ## How can we create circle and square in html css using only one div?
 
