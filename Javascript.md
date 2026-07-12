@@ -174,11 +174,6 @@ if a isn’t defined, then b.
 - works as value.prop, if value exists,
 - otherwise (when value is undefined/null) it returns undefined.
 
-## The typeof Operator:
-
-![image](/images/typeof.png)
-
-
 ## truthy values & falsy values using `!!`:
 
 - The following values are considered falsy in JavaScript:
