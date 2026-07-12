@@ -74,13 +74,6 @@ var x;
 
   ![image](/images/Screenshot%20from%202023-03-10%2010-35-10.png)
 
-## 5. where to write js in our html?
-
-- Placing scripts at the bottom of the `<body>` element improves the display speed, because script interpretation slows down the display.
-
-- Inside the <head> section: Scripts placed here are loaded and executed before the <body> content. This is suitable for functions or global variables that need to be available early in the page load.
-- Before the closing </body> tag: Placing scripts here allows the HTML content to load and render before the JavaScript executes.
-
 ## 6. 4 Ways to Declare a JavaScript Variable:
 
 - Since JavaScript treats a dollar sign as a letter, identifiers containing $ are valid variable names.
@@ -88,7 +81,7 @@ var x;
 - Using let : block scope
 - Using const: can not reassign.
 - Using nothing: if you dont use any keyword name then it is automatically declare
-- Variables created without a declaration keyword (var, let, or const) are always global, even if they are created inside a function.
+- **Variables created without a declaration keyword (var, let, or const) are always global, even if they are created inside a function.**
 
 ## 9. var vs let.
 
@@ -126,32 +119,6 @@ exampleFunction();
 - The TDZ helps prevent bugs by stopping developers from using variables before they are properly initialized.
 - It makes code more predictable and easier to understand.
 
-
-
-## 10 JavaScript has 2 Datatypes
-
-- primitive:
-
-1. String
-2. Number
-3. Bigint
-4. Boolean
-5. Undefined
-6. Null
-7. Symbol
-8. Object
-
-- Non primitive:
-
-  The Object Datatype
-  The object data type can contain:
-
-1. An object
-2. An array
-3. A date
-
-![image](/images/datatypes.png)
-
 ## 11. Explain Implicit Type Coercion in javascript.
 
 Example 1:
@@ -162,19 +129,16 @@ var y = "3";
 x + y // Returns "33" 
 ```
 
-**Note - ‘ + ‘ operator when used to add two numbers, outputs a number. The same ‘ + ‘ operator when used to add two strings, outputs the concatenated string:**
+- **Note - ‘ + ‘ operator when used to add two numbers, outputs a number. 
+- The same ‘ + ‘ operator when used to add two strings, outputs the concatenated string:**
 
-**Note - Type coercion also takes place when using the ‘ - ‘ operator, but the difference while using ‘ - ‘ operator is that, a string is converted to a number and then subtraction takes place.**
+- **Note - Type coercion also takes place when using the ‘ - ‘ operator, but the difference while using ‘ - ‘ operator is that, a string is converted to a number and then subtraction takes place.**
 
 ```
 var x = 3;
 Var y = "3";
 x - y    //Returns 0 since the variable y (string type) is converted to a number type
 ```
-
-## What is the difference between undefined value and null value?
-
-- Null in JavaScript means an empty value and is also a primitive type in JavaScript. The variable which has been assigned as null contains no value.Undefined, on the other hand, means the variable has been declared, but its value has not been assigned.
 
 ## JavaScript Operators:
 
@@ -188,7 +152,7 @@ x - y    //Returns 0 since the variable y (string type) is converted to a number
 ## The Nullish Coalescing Operator (`??`):
 
 - The nullish coalescing operator is written as two question marks `??`.
-- As it treats null and undefined similarly, we’ll use a special term here, in this article. For brevity, we’ll say that a value is “defined” when it’s neither null nor undefined.
+- As it treats null and undefined similarly.
 
 ```
 The result of a ?? b is:
@@ -210,22 +174,10 @@ if a isn’t defined, then b.
 - works as value.prop, if value exists,
 - otherwise (when value is undefined/null) it returns undefined.
 
-- The optional chaining ?. syntax has three forms:
-
-- `obj?.prop `– returns obj.prop if obj exists, otherwise undefined.
-- `obj?.[prop]` – returns obj[prop] if obj exists, otherwise undefined.
-- `obj.method?.() `– calls obj.method() if obj.method exists, otherwise returns undefined.
-
 ## The typeof Operator:
 
 ![image](/images/typeof.png)
 
-## Boolean function:
-
-- `Boolean('')` : gives false.
-- `Boolean('dasd')` : gives true.
-
-  ![image](/images/boolean.png)
 
 ## truthy values & falsy values using `!!`:
 
