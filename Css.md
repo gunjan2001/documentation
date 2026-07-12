@@ -110,13 +110,12 @@ The cascade algorithm is split into 4 distinct stages.
 
 - properties:
 
-```
-static(default),
-absolute,
-relative,
-fixed,
-sticky(top:0)
-```
+static: Default value. Here the element is positioned according to the normal flow of the document.
+absolute: Here the element is positioned relative to its parent element. The final position is determined by the values of left, right, top, bottom.
+fixed: This is similar to absolute except here the elements are positioned relative to the <html> element.
+relative: Here the element is positioned according to the normal flow of the document and positioned relative to its original/ normal position.
+initial: This resets the property to its default value.
+inherit: Here the element inherits or takes the property of its parent.
 
 ## fixed vs sticky:
 
