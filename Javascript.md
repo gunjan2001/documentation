@@ -3,12 +3,11 @@
 ## 1. What is Ecmascript?
 
 - It is a set of guidlines for browsers vendors to provide functinality to ensure the interoperability of web pages across different browsers.
-- latest version of es is es-2022 which 13th edition.
-- commonly used is es 6.
 
 ## 2. What is Babel?
 
-- Babel is a free and open-source JavaScript transcompiler that is mainly used to convert ECMAScript 2015+(ES-6) code into backwards-compatible JavaScript code that can be run by older JavaScript engines. (If we want to convert new js functinality to old that work was done by babel.)
+- Babel is a free and open-source JavaScript transcompiler that is mainly used to convert ECMAScript 2015+(ES-6) code into backwards-compatible JavaScript code that can be run by older JavaScript engines.
+- (If we want to convert new js functinality to old that work was done by babel.)
 
 ## 3. What makes JavaScript unique?
 
