@@ -254,13 +254,9 @@ alert( NaN === NaN ); // false
 - substr() is similar to slice().
 - The difference is that the second parameter specifies the length of the extracted part.
 
-![image](/images/stringsmethods.png)
-
 ## trim():
 
 - It will trim the whitespace string from begin and end.
-
-![image](/images/trim.png)
 
 ## padStart()
 
@@ -272,6 +268,7 @@ Pad a string with "0" until it reaches the length 4:
 
 let text = "5";
 let padded = text.padStart(4,"0");
+// "0005"
 ```
 
 ## repeat():
@@ -282,17 +279,6 @@ let padded = text.padStart(4,"0");
 ```
 string.repeat(count)
 ```
-
-## Extracting String Characters:
-
-- There are 3 methods for extracting string characters:
-
-- charAt(position)
-- charCodeAt(position)
-- Property access [ ] : ECMAScript 5 (2009) allows property access [ ] on strings.
-- It makes strings look like arrays (but they are not).
-- If no character is found, [ ] returns undefined, while charAt() returns an empty string.
-- It is read only. str[0] = "A" gives no error (but does not work!)
 
 ## Converting a String to an Array:
 
@@ -314,15 +300,6 @@ string.repeat(count)
 - The search() method cannot take a second start position argument.
 - The indexOf() method cannot take powerful search values (regular expressions).
 
-### match():
-
-- The match() method returns(will return only the first match in the string) an array containing the results of matching a string against a string (or a regular expression).
-
-### matchAll()
-
-- The matchAll() method returns an iterator containing the results of matching a string against a string (or a regular expression).
-- matchAll() does not work in Internet Explorer.
-
 ### global search :
 
 - `/aim/g` : Perform a global search for aim.
@@ -340,8 +317,6 @@ string.repeat(count)
 
 - at():	Returns an indexed element of an array
 - concat():	Joins arrays and returns an array with the joined arrays
-- constructor : Returns the function that created the Array prototype
-- copyWithin():	Copies array elements within the array, to and from specified positions
 - entries():	Returns a key/value pair Array Iteration Object
 - every():	Checks if every element in an array pass a test
 
@@ -385,14 +360,6 @@ Output: 1,10,2,20,3,30 ...
 ```
 
 - forEach():	Calls a function for each array element
-- from():	Creates an array from an object
-
-```
-let text = "ABCDEFG";
-Array.from(text);
-
-Ans: A,B,C,D,E,F,G
-```
 - includes():	Check if an array contains the specified element
 
 ```
@@ -416,34 +383,17 @@ Ans: [ "Banana", "Orange", "Apple", "Mango" ]
 
 - **pop():**	Removes the last element of an array, and returns that element
 - **push():**	Adds new elements to the end of an array, and returns the new length
-
-- reduce():	Reduce the values of an array to a single value (going left-to-right)
-
-```
-const numbers = [175, 50, 25];
-
-document.getElementById("demo").innerHTML = numbers.reduce(myFunc);
-
-function myFunc(total, num) {
-  return total - num;
-}
-```
-- reduceRight():	Reduce the values of an array to a single value (going right-to-left)
-
-- reverse():	Reverses the order of the elements in an array, The reverse() method overwrites the original array.
-
 - **shift()**:	Removes the first element of an array, and returns that element
 - **unshift()**:	Adds new elements to the beginning of an array, and returns the new length
 
+
+- reverse():	Reverses the order of the elements in an array, The reverse() method overwrites the original array.
 - slice():	Selects a part of an array, and returns the new array
+
 - some():	Checks if any of the elements in an array pass a test
 - sort():	Sorts the elements of an array
 
 - splice():	Adds or Removes array elements
-
-- toReversed():	Reverses the order of array elements (to a new array)
-- toSorted():	Sorts the elements of an array (to a new array)
-- toSpliced():	Adds or Removes array elements (to a new array)
 
 - toString():	Converts an array to a string, and returns the result
 - valueOf():	Returns the primitive value of an array
