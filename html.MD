@@ -6,12 +6,6 @@
 - HTML is the standard markup language for Web pages. </br>
 - HTML is Not Case Sensitive.
 
-## Sequence of running apply style to particular element
-
-- html file will be executed line by line so whatever style we applied at last that will apply.
-- if inline is there then that style is only applied .
-- internal and external will depend on the order we had given.
-
 ## Accessibility object model (AOM)
 
 - As the browser parses the content received, it builds the document object model (DOM) and the CSS object model (CSSOM). It then also builds an accessibility tree.
@@ -50,6 +44,10 @@ Marquee is used for scrolling text on a web page. It scrolls the image or text u
 
 “display: none” : It removes the element from the document flow & do not take up any space on the page
 “visibility: hidden” : It simply hides element & It take up space.
+
+# What is difference between opacity 0 vs visibility hidden?
+
+
 
 ## When to use scripts in the head and when to use scripts in the body?
 
