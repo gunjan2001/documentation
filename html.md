@@ -36,6 +36,14 @@ srcset=" small.jpg 240w, medium.jpg 300w, large.jpg 720w
 sizes=" (min-width: 960px) 720px, 100vw "
 ```
 
+## Tags:
+
+- The `<!DOCTYPE html>` declaration defines that this document is an HTML5 document
+- The `<html>` element is the root element of an HTML page
+- The `<head>` element contains meta information about the HTML page
+- The `<title>` element specifies a title for the HTML page (which is shown in the browser's title bar or in the page's tab)
+- The `<body>` element defines the document's body, and is a container for all the visible contents, such as headings, paragraphs, images, hyperlinks, tables lists, etc.
+
 ## What is a marquee in HTML?
 
 Marquee is used for scrolling text on a web page. It scrolls the image or text up, down, left, or right automatically. To apply for a marquee, you have to use </marquee> tags.
@@ -52,30 +60,9 @@ Marquee is used for scrolling text on a web page. It scrolls the image or text u
 
 ## When to use scripts in the head and when to use scripts in the body?
 
-Scripts can be placed in the `<head>` section of the HTML document or in the `<body>` section. Scripts that must be executed before the page is displayed, such as scripts that define variables or functions, should be placed in the `<head>` section. Scripts that must be executed after the page is displayed, such as scripts that manipulate the DOM, should be placed in the `<body>` section.
-
-## Tags:
-
-- The `<!DOCTYPE html>` declaration defines that this document is an HTML5 document
-- The `<html>` element is the root element of an HTML page
-- The `<head>` element contains meta information about the HTML page
-- The `<title>` element specifies a title for the HTML page (which is shown in the browser's title bar or in the page's tab)
-- The `<body>` element defines the document's body, and is a container for all the visible contents, such as headings, paragraphs, images, hyperlinks, tables lists, etc.
-- The `<h1>` element defines a large heading
-- The `<p>` element defines a paragraph
-
-## What is an HTML Element?
-
-- An HTML element is defined by a start tag, some content, and an end tag:
-- The HTML element is everything from the start tag to the end tag.
-- `<tagname>` Content goes here... `</tagname>`
-
-## HTML Attributes
-
-- All HTML elements can have attributes
-- Attributes provide additional information about elements
-- Attributes are always specified in the start tag
-- Attributes usually come in name/value pairs like: name="value"
+- Scripts can be placed in the `<head>` section of the HTML document or in the `<body>` section.
+- Scripts that must be executed before the page is displayed, such as scripts that define variables or functions, should be placed in the `<head>` section.
+- Scripts that must be executed after the page is displayed, such as scripts that manipulate the DOM, should be placed in the `<body>` section.
 
 ## URL:
 
@@ -84,21 +71,12 @@ Scripts can be placed in the `<head>` section of the HTML document or in the `<b
 1. Absolute URL - Links to an external image that is hosted on another website. Example: src="https://www.w3schools.com/images/img_girl.jpg". </br> </br>
 2. Relative URL - Links to an image that is hosted within the website. Example: src="/images/img_girl.jpg".
 
-## Attributes:
-
-- The lang attribute of the `<html>` tag declares the language of the Web page
-- The title attribute defines some extra information about an element
-
 ## `meta` tag:
 
 - `<meta name="viewport" content="width=device-width, initial-scale=1.0">`
 - This gives the browser instructions on how to control the page's dimensions and scaling.
 - The `width=device-width` part sets the width of the page to follow the screen-width of the device (which will vary depending on the device).
 - The `initial-scale=1.0` part sets the initial zoom level when the page is first loaded by the browser.
-
-## `<hr>` tag:
-
-- The `<hr>` tag defines a thematic break in an HTML page, and is most often displayed as a horizontal rule.
 
 ## `<pre>` tag:
 
@@ -125,10 +103,6 @@ Scripts can be placed in the `<head>` section of the HTML document or in the `<b
 - `<blockquote>`,`<q>`, `<abbr>`, `<address>`, `<cite>`, and `<bdo>` HTML elements.
   </br>
 
-## `<cite>` tag:
-
-- Defines the title of a creative work.
-
 ## `<bdo>` tag: Bi-Directional Override
 
 - <bdo dir="rtl">This line will be written from right to left</bdo>
@@ -138,34 +112,6 @@ Scripts can be placed in the `<head>` section of the HTML document or in the `<b
 - `mailto` : directly link to ur email
 - `<a href="mailto:nowhere@mozilla.org">Send email to nowhere</a>`
 
-## Link bookmark:
-
-- Use the id attribute (id="value") to define bookmarks in a page </br>
-- Use the href attribute (href="#value") to link to the bookmark
-
-- <p><a href="#C4">Jump to Chapter 4</a></p>
-- <h2 id="C4">Chapter 4</h2>
-
-## Image Floating:
-
-- Use the CSS float property to let the image float to the right or to the left of a text.
-
-## HTML `<map>` Tag:
-
-- Example: </br>
-- between map you can use area tag which define the area of particular image and you will add attribute on area tag: </br>
-
-- A clickable area is defined using an `<area>` element. </br>
-  -You must define the shape of the clickable area, and you can choose one of these values:
-  </br>
-- `rect` - defines a rectangular region
-- `circle` - defines a circular region
-- `poly` - defines a polygonal region
-- `default` - defines the entire region
-
-## `<picture>` tag:
-
-- Resize the browser window to load different images.
 
 ## Background Image on a HTML element:
 
@@ -177,25 +123,6 @@ Scripts can be placed in the `<head>` section of the HTML document or in the `<b
 ## Favicon:
 
 - `<link rel="icon" type="image/x-icon" href="/images/favicon.ico">`.
-
-## `<colgroup>`:
-
-- The `<colgroup>` element is used to style specific columns of a table. </br>
-- Each group is specified with a `<col>`element.</br>
-- The span attribute specifies how many columns that get the style.The style attribute specifies the style to give the columns.
-- `The <colgroup> tag must be a child of a <table> element and should be placed before any other table elements, like <thead>, <tr>, <td> etc., but after the <caption> element, if present.`
-
-- `width` property
-- `visibility` property
-- `background` properties
-- `border` properties
-- You can hide columns with the `visibility: collapse` property.
-
-## List:
-
-![img](/images/list.png)</br>
-![img](/images/list-1.png)</br>
-![img](/images/list-style.png)
 
 ## Blocklevel elements:
 
@@ -212,10 +139,6 @@ a-anchor, input, img, label, button, textarea, sub, sup, strong.
 ```
 
 ![img](/images/inline.png)
-
-## class:
-
-- Different elements can have same class and same element can have diff class name.
 
 ## id:
 
@@ -377,3 +300,9 @@ OR
 
 
 ```
+
+## List:
+
+![img](/images/list.png)</br>
+![img](/images/list-1.png)</br>
+![img](/images/list-style.png)
