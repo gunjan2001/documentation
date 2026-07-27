@@ -22,6 +22,15 @@ The major features of React are:
 - **Smaller initial payload** → faster download, especially on mobile/slow networks.
 - **Less main-thread work up front** → the browser parses/compiles less JS before the page responds. This directly improves TBT (Total Blocking Time), TTI, and INP.
 
+## passed by value and passed by reference:
+
+The rule in JavaScript
+
+- Primitives (number, string, boolean, null, undefined, symbol, bigint) are passed by value — the function gets a copy. Changing it inside the function does not affect the caller.
+- Objects (including arrays, Set, Map, functions) are passed by reference* — the function gets a copy of the reference pointing to the same object in memory. Mutating the object's contents is visible to the caller.
+
+▎ *Technically JS is always "pass by value" — but for objects the value being copied is the reference/pointer. That's why reassigning the parameter doesn't affect the caller, but mutating its properties does. This is often called "call by sharing."
+
 - **Create react component without JSX:**
 
 ```
