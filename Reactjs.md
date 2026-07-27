@@ -14,13 +14,13 @@ The major features of React are:
 - Follows Unidirectional or one-way data flow or data binding. means it will render the components from parent to child.
 - Uses reusable/composable UI components to develop the view.
 
-# JSX:
+## Code Splitting:
 
-**what is JSX?**
+- Instead of bundling your entire app into one big JavaScript file that the browser must download, parse, and execute before anything becomes interactive, you break it into smaller chunks that load on demand — only when a given route, component, or interaction actually needs them.
 
-- JavaScript XML.
-- It writes XML-like code for elements and components.
-- JSX ultimetly transpiles to pure javascript which is understood by the browsers.
+### How it improves performance:
+- **Smaller initial payload** → faster download, especially on mobile/slow networks.
+- **Less main-thread work up front** → the browser parses/compiles less JS before the page responds. This directly improves TBT (Total Blocking Time), TTI, and INP.
 
 - **Create react component without JSX:**
 
